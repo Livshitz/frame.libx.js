@@ -1,0 +1,52 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "lib": ["ES2016", "DOM", "DOM.Iterable", "ES2015.Promise", "ES2019"],
+        // "target": "esnext",
+        "module": "System",
+        "moduleResolution": "node",
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "experimentalDecorators": true,
+        "declaration": true,
+        "sourceMap": true,
+        // "allowJs": true,
+        // "noImplicitThis": true,
+        "outDir": "./build-web/",
+        "rootDir": "./src-web/scripts",
+
+        "baseUrl": "./",
+        // "rootDirs": ["src/scripts", "."],
+        // "noImplicitAny": false,
+        "typeRoots": ["node_modules/@types", ".", "./"],
+        "skipLibCheck": true,
+        // "resolveJsonModule": true,
+        "allowSyntheticDefaultImports": true,
+        "downlevelIteration": true,
+        "esModuleInterop": true,
+        "allowJs": true,
+
+        // "incremental": true,
+        // "allowUmdGlobalAccess": true,
+        // "isolatedModules": true,
+
+        "types": ["jest", "libx.js", "node", "vue", "vue-router", "systemjs"],
+        "paths": {
+            "@scripts/ts/browserified/*": ["./src-web/ts/browserified/*"],
+            "/frame/scripts/ts/browserified/frame.js": ["./src-web/scripts/ts/browserified/frame"],
+            "@proj/libs/src": ["@proj/libs/build"],
+            "/scripts/*": ["./src-web/scripts/*"],
+            "/frame/scripts/*": ["./src-web/scripts/*"],
+            "./*": ["./src-web/ts/*"]
+            // "../scripts/browserified": [ "./scripts/*"],
+        }
+    },
+    "include": ["./src-web/**/*.d.ts", "./src-web/**/*.ts", "src-web/scripts/ts/global", "src-web/scripts/ts/vue.d.tsx"],
+    "exclude": ["node_modules/**/*", "dist", "build", "tests", "./src-web/scripts/ts/browserified/**/*", "libs/lib/**/*", "api/**/*", "**/@Module.ts"],
+    "vueCompilerOptions": {
+        "target": 2.7,
+        "experimentalTemplateCompilerOptions": {
+            "compatConfig": { "MODE": 2 } // optional
+        }
+    }
+}

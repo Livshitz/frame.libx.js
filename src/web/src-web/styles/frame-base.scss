@@ -1,0 +1,192 @@
+@charset "utf-8";
+
+@import './partial/layout-attributes.scss';
+@import './partial/layout.scss';
+@import './partial/layout-service.scss';
+@import '~bulma/sass/utilities/initial-variables.sass';
+@import '~bulma/sass/utilities/functions.sass';
+@import '~bulma/sass/utilities/derived-variables.sass';
+@import '~bulma/sass/utilities/mixins.sass';
+
+// Import a Google Font
+// @import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+// Update Bulma's global variables
+
+// -----------
+
+// .row { @extend .layout-row; }
+
+// -----------
+
+// $rtl: true;
+
+// -----------
+// $footer-background-color: $white-bis;
+$footer-padding: 3rem 1.5rem 3rem;
+
+// -----------
+
+$font-stack: 'BlinkMacSystemFont', Helvetica, sans-serif;
+$primary-color: #444;
+
+$size-1: 3rem;
+$gap: 32px;
+$easing: ease-out;
+$radius-large: 6px;
+
+// $pink: ;
+// $brown: #757763;
+// $beige-light: #D0D1CD;
+// $beige-lighter: #EFF0EB;
+
+$primary: #1a95e0; //#8a4d76; //$purple;
+$secondary: #727578; //#727578; // #fa7c91; //$purple;
+$link: $secondary; //$blue; //$pink;
+$info: $cyan;
+$success: $green;
+$warning: $yellow;
+$danger: #d20962; //$red;
+$dark: $grey-darker;
+$text: $grey-dark;
+
+.primary { color: $primary; }
+.secondary { color: $secondary; }
+
+$family-primary: $family-sans-serif; // "Nunito", sans-serif;
+
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+// $body-background-color: $beige-lighter;
+$control-border-width: 2px;
+// $input-border-color: transparent;
+$input-shadow: 5px; //none;
+$background: $white-ter;
+
+$colors: mergeColorMaps(
+	(
+		'white': (
+			$white,
+			$black,
+		),
+		'black': (
+			$black,
+			$white,
+		),
+		'light': (
+			$light,
+			$light-invert,
+		),
+		'dark': (
+			$dark,
+			$dark-invert,
+		),
+		'primary': (
+			$primary,
+			$primary-invert,
+			$primary-light,
+			$primary-dark,
+		),
+		'link': (
+			$link,
+			$link-invert,
+			$link-light,
+			$link-dark,
+		),
+		'info': (
+			$info,
+			$info-invert,
+			$info-light,
+			$info-dark,
+		),
+		'success': (
+			$success,
+			$success-invert,
+			$success-light,
+			$success-dark,
+		),
+		'warning': (
+			$warning,
+			$warning-invert,
+			$warning-light,
+			$warning-dark,
+		),
+		'danger': (
+			$danger,
+			$danger-invert,
+			$danger-light,
+			$danger-dark,
+		),
+	),
+	$custom-colors
+);
+$shades: mergeColorMaps(
+	(
+		'black-bis': $black-bis,
+		'black-ter': $black-ter,
+		'grey-darker': $grey-darker,
+		'grey-dark': $grey-dark,
+		'grey': $grey,
+		'grey-light': $grey-light,
+		'grey-lighter': $grey-lighter,
+		'white-ter': $white-ter,
+		'white-bis': $white-bis,
+	),
+	$custom-shades
+);
+$sizes: $size-1 $size-2 $size-3 $size-4 $size-5 $size-6 $size-7;
+
+// -----------
+
+// Import only what you need from Bulma
+// @import "../node_modules/bulma/sass/utilities/_all.sass";
+// @import "../node_modules/bulma/sass/base/_all.sass";
+// @import "../node_modules/bulma/sass/elements/button.sass";
+// @import "../node_modules/bulma/sass/elements/container.sass";
+// @import "../node_modules/bulma/sass/elements/title.sass";
+// @import "../node_modules/bulma/sass/form/_all.sass";
+// @import "../node_modules/bulma/sass/components/navbar.sass";
+// @import "../node_modules/bulma/sass/layout/hero.sass";
+// @import "../node_modules/bulma/sass/layout/section.sass";
+
+// @import '../../node_modules/bulma/bulma.sass';
+// @import '../../../../node_modules/buefy/src/scss/buefy-build.scss';
+@import '~bulma-tooltip/src/sass/index.sass';
+@import '~buefy/src/scss/buefy-build.scss';
+// @import "~buefy/src/scss/buefy.scss";
+// @import "~bulma/sass/utilities/_all";
+
+// -----------
+
+$color: #ffdd57;
+
+body {
+	font: 100% $font-stack;
+	color: $primary-color;
+}
+
+.h1 {
+	@extend .is-size-1;
+}
+.h2 {
+	@extend .is-size-2;
+}
+.h3 {
+	@extend .is-size-3;
+}
+.h4 {
+	@extend .is-size-4;
+}
+.h5 {
+	@extend .is-size-5;
+}
+.h6 {
+	@extend .is-size-6;
+}
+
+.loader {
+	@include loader;
+	display: inline-block;
+	vertical-align: middle;
+}
+

@@ -1,0 +1,46 @@
+doctype html
+
+html
+	head
+		title() frame.libx.js
+
+		// build:css bundle/bundle.css
+		link(rel="stylesheet",href="./build-web/styles/terminal.css")
+		link(rel="stylesheet",href="./build-web/styles/frame-base.css")
+		link(rel="stylesheet",href="./build-web/styles/frame.css")
+		// endbuild
+		
+		// build:jsBundle bundle/libs.js
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js')
+		script(src='https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js')
+		//- script(src='https://use.fontawesome.com/releases/v5.2.0/js/all.js',defer,async)
+		//- script(src="./node_modules/sanitize-html/index.js")
+		script(src="./node_modules/bulma-toast/dist/bulma-toast.min.js", defer)
+		script(src="./node_modules/moment/min/moment.min.js", defer,async)
+
+		//- The core Firebase JS SDK is always required and must be listed first
+		script(src='https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js')
+		script(src='https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js')
+		script(src='https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js')
+		script(src='https://www.gstatic.com/firebasejs/9.6.7/firebase-storage-compat.js')
+		script(src='https://www.gstatic.com/firebasejs/9.6.7/firebase-analytics-compat.js')
+
+	
+		//- script(src='https://requirejs.org/docs/release/2.3.6/minified/require.js', data-main="/scripts/ts/browserified/browser.js")
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.6.1/system.min.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.6.1/extras/named-exports.min.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.6.1/extras/named-register.min.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.6.1/extras/global.min.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.6.1/extras/use-default.min.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.6.1/extras/dynamic-import-maps.min.js')
+		// endbuild
+
+		
+		//- script(src='https://unpkg.com/contentful@latest/dist/contentful.browser.min.js')
+		//- script(src='https://unpkg.com/@contentful/rich-text-html-renderer@latest/dist/rich-text-html-renderer.es5.js')
+
+		//- script(src='https://cdn.jsdelivr.net/npm/concurrency.libx.js@0.2.20/dist/index.js')
+		//- script(src='/Users/elya/Projects/Livshitz/concurrency.libx.js/dist/browser.min.ts')
+
+
+	

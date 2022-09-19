@@ -1,0 +1,97 @@
+{
+    "name": "frame.libx.js",
+    "version": "0.1.0",
+    "main": "index.js",
+    "license": "MIT",
+    "author": "",
+    "types": "src/web/src-web/scripts/ts/global.d.ts",
+    "scripts": {
+        "build:web": "node src/web/build.js --minify",
+        "watch:web": "node src/web/build.js --watch",
+        "format": "prettier --config .prettierrc 'src/**/*.ts' 'tests/**/*.ts' --write",
+        "build": "tsc",
+        "bundle": "node build/webBundler.js --src=\"src/web/src-web\" --minify",
+        "watch": "tsc -w",
+        "main": "node build/Main.js",
+        "test": "jest",
+        "test:ci": "jest --ci --reporters=default --reporters=jest-junit --coverage --coverageReporters=cobertura --coverageReporters=html",
+        "bump": "./bump.sh"
+    },
+    "bin": {
+        "my-command": "bin/cli.sh"
+    },
+    "files": [
+        "bin/**",
+        "build/**",
+        "dist/**",
+        "src/**",
+        "*.js",
+        "*.ts"
+    ],
+    "dependencies": {
+        "@babel/plugin-proposal-decorators": "^7.18.2",
+        "@babel/plugin-proposal-pipeline-operator": "^7.18.2",
+        "@babel/plugin-transform-runtime": "^7.18.5",
+        "@babel/preset-react": "^7.17.12",
+        "@contentful/rich-text-html-renderer": "^15.13.1",
+        "@types/gapi.client.drive": "^3.0.13",
+        "@vue/runtime-dom": "latest",
+        "animated-number-vue": "^1.0.0",
+        "axios": "^0.27.2",
+        "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+        "babel-preset-es2015": "^7.0.0-beta.3",
+        "babel-preset-stage-0": "^7.0.0-beta.3",
+        "buefy": "^0.9.22",
+        "bulma": "^0.9.4",
+        "bulma-toast": "^2.4.1",
+        "bulma-tooltip": "^3.0.2",
+        "copy-to-clipboard": "^3.3.1",
+        "firebase-admin": "^10.3.0",
+        "firebase-functions": "^3.21.2",
+        "html2canvas": "^1.4.1",
+        "libx.js": "^2.31.1",
+        "lottie-web": "^5.9.4",
+        "moment": "^2.29.3",
+        "node-sass": "^7.0.1",
+        "pax.libx.js": "^0.6.16",
+        "pug": "^3.0.2",
+        "sanitize-html": "^2.7.0",
+        "showdown": "^2.1.0",
+        "systemjs": "^6.12.1",
+        "terminal.css": "^0.7.2",
+        "typescript": "^4.7.3",
+        "vue": "^2.6.14",
+        "vue-class-component": "^7.2.6",
+        "vue-router": "^3.5.4",
+        "vue-sanitize": "^0.2.2",
+        "vue-template-compiler": "^2.6.14"
+    },
+    "devDependencies": {
+        "@types/gapi": "^0.0.42",
+        "@types/gapi.auth2": "^0.0.56",
+        "@types/gapi.client": "^1.0.5",
+        "@types/gapi.client.sheets": "^4.0.20201029",
+        "@types/jest": "^28.1.1",
+        "@types/node": "^18.0.0",
+        "@types/systemjs": "^6.1.1",
+        "jest": "^28.1.1",
+        "jest-junit": "^13.2.0",
+        "jest-junit-reporter": "^1.1.0",
+        "ts-jest": "^28.0.5"
+    },
+    "jest": {
+        "coverageReporters": [
+            "cobertura",
+            "html"
+        ]
+    },
+    "jest-junit": {
+        "suiteName": "jest tests",
+        "outputDirectory": "build/test_reports",
+        "output": "./.tmp/test/TEST-RESULTS.xml",
+        "classNameTemplate": "{classname} - {title}",
+        "titleTemplate": "{classname} - {title}",
+        "ancestorSeparator": " > ",
+        "usePathForSuiteName": "true"
+    }
+}
