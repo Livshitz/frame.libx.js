@@ -80,12 +80,6 @@
         "jest-junit-reporter": "^1.1.0",
         "ts-jest": "^28.0.5"
     },
-    "jest": {
-        "coverageReporters": [
-            "cobertura",
-            "html"
-        ]
-    },
     "jest-junit": {
         "suiteName": "jest tests",
         "outputDirectory": "build/test_reports",

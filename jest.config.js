@@ -1,6 +1,10 @@
 // process.env.TZ = 'UTC';
 
 module.exports = {
+    coverageReporters: [
+        "cobertura",
+        "html"
+    ],
     roots: [
         "<rootDir>"
     ],

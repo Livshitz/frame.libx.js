@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="1" failures="1" errors="0" time="9.01">
+  <testsuite name="undefined" errors="0" failures="1" skipped="0" timestamp="2022-09-21T01:41:27" time="8.809" tests="1">
+    <testcase classname=" should return true" name=" should return true" time="5.002">
+      <failure>Error: expect(received).toEqual(expected) // deep equality
+
+Expected: true
+Received: undefined
+    at /Users/livshitz/Projects/Livshitz/frame.libx.js/tests/Main.spec.ts:6:24
+    at Generator.next (&lt;anonymous&gt;)
+    at /Users/livshitz/Projects/Livshitz/frame.libx.js/tests/Main.spec.ts:8:71
+    at new Promise (&lt;anonymous&gt;)
+    at Object.&lt;anonymous&gt;.__awaiter (/Users/livshitz/Projects/Livshitz/frame.libx.js/tests/Main.spec.ts:4:12)
+    at Object.&lt;anonymous&gt; (/Users/livshitz/Projects/Livshitz/frame.libx.js/tests/Main.spec.ts:5:43)
+    at Promise.then.completed (/Users/livshitz/Projects/Livshitz/frame.libx.js/node_modules/jest-circus/build/utils.js:323:26)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/Users/livshitz/Projects/Livshitz/frame.libx.js/node_modules/jest-circus/build/utils.js:259:10)
+    at _callCircusTest (/Users/livshitz/Projects/Livshitz/frame.libx.js/node_modules/jest-circus/build/run.js:277:40)</failure>
+      <failure>Error: thrown: &quot;Exceeded timeout of 5000 ms for a test.
+Use jest.setTimeout(newTimeout) to increase the timeout value, if this is a long-running test.&quot;
+    at Object.&lt;anonymous&gt; (/Users/livshitz/Projects/Livshitz/frame.libx.js/tests/Main.spec.ts:5:1)
+    at Runtime._execModule (/Users/livshitz/Projects/Livshitz/frame.libx.js/node_modules/jest-runtime/build/index.js:1714:24)
+    at Runtime._loadModule (/Users/livshitz/Projects/Livshitz/frame.libx.js/node_modules/jest-runtime/build/index.js:1223:12)
+    at Runtime.requireModule (/Users/livshitz/Projects/Livshitz/frame.libx.js/node_modules/jest-runtime/build/index.js:1047:12)
+    at jestAdapter (/Users/livshitz/Projects/Livshitz/frame.libx.js/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:89:13)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at runTestInternal (/Users/livshitz/Projects/Livshitz/frame.libx.js/node_modules/jest-runner/build/runTest.js:411:16)
+    at runTest (/Users/livshitz/Projects/Livshitz/frame.libx.js/node_modules/jest-runner/build/runTest.js:499:34)</failure>
+    </testcase>
+  </testsuite>
+</testsuites>
