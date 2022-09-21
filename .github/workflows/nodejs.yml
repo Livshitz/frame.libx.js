@@ -29,12 +29,12 @@ jobs:
             - run: yarn --frozen-lockfile
             - run: yarn build
             - run: yarn test
+            - run: yarn test:ci
               if: github.ref == 'refs/heads/master'
             - name: bump
               run: |
                   git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
                   git config user.name "$GITHUB_ACTOR"
-                  npm login
                   yarn bump
               env:
                   # NOTE: Make sure to set up your NPM secret in Github

@@ -24,6 +24,7 @@
     "files": [
         "bin/**",
         "build/**",
+        "build-web/**",
         "dist/**",
         "src/**",
         "*.js",
