@@ -11,7 +11,6 @@ export class PageMixin extends Vue.mixin({}) {
         if (layout == null) return;
 
         console.log('-------- PageMixin');
-        debugger;
 
         // libx.merge(this.$app.layout, layout);
 
@@ -31,4 +30,5 @@ export class PageMixin extends Vue.mixin({}) {
     currentPath: string;
     currentRoute: string;
     isMenuActive: boolean;
+    $route: any;
 }

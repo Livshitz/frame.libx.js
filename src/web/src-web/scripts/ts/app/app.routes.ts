@@ -33,40 +33,35 @@ export const router = new VueRouter({
     },
 });
 
-const routes = [
-    // { path: '/', component: helpers.lazyLoader('/views/main.vue.js') },
-
-    // blogs
-    // { path: '/blog/hello_world', component: helpers.lazyLoader('/views/blog/hello_world.vue.js') },
-    // { path: '/blog/sheet2Timeline', component: helpers.lazyLoader('/views/blog/sheet2Timeline.vue.js') },
-    // { path: '/blog/chefVsSalesman', component: helpers.lazyLoader('/views/blog/chefVsSalesman.vue.js') },
-
-    // libraries
-
+export const baseRoutes = {
     // tests
-    { path: '/tests/', component: helpers.lazyLoader('/frame/views/tests/menu.vue.js') },
-    { path: '/tests/gantt', component: helpers.lazyLoader('/frame/views/tests/gantt.vue.js') },
-    { path: '/tests/terminal', component: helpers.lazyLoader('/frame/views/tests/terminal.vue.js') },
-    { path: '/tests/ts', component: helpers.lazyLoader('/frame/views/tests/ts.vue.js') },
-    { path: '/tests/bar', component: { template: '<div>bar</div>' } },
-    { path: '/tests/foo', component: { template: '<div><h1>foo1</h1><test-comp>foo</test-comp></div>' } }, //TestComp2 },
-    { path: '/tests/pages', component: helpers.lazyLoader('/frame/views/tests/pages.vue.js') },
-    { path: '/tests/view1', component: helpers.lazyLoader('/frame/views/tests/view-1.vue.js') },
-    { path: '/tests/view2', component: helpers.lazyLoader('/frame/views/tests/view-2.vue.js') },
-    { path: '/tests/form/:id?', component: helpers.lazyLoader('/frame/views/tests/form.vue.js') },
-    { path: '/tests/icons', component: helpers.lazyLoader('/frame/views/tests/icons.vue.js') },
+    '/tests/': { component: helpers.lazyLoader('/frame/views/tests/menu.vue.js') },
+    '/tests/gantt': { component: helpers.lazyLoader('/frame/views/tests/gantt.vue.js') },
+    '/tests/terminal': { component: helpers.lazyLoader('/frame/views/tests/terminal.vue.js') },
+    '/tests/ts': { component: helpers.lazyLoader('/frame/views/tests/ts.vue.js') },
+    '/tests/bar': { component: { template: '<div>bar</div>' } },
+    '/tests/foo': { component: { template: '<div><h1>foo1</h1><test-comp>foo</test-comp></div>' } }, //TestComp2 },
+    '/tests/pages': { component: helpers.lazyLoader('/frame/views/tests/pages.vue.js') },
+    '/tests/view1': { component: helpers.lazyLoader('/frame/views/tests/view-1.vue.js') },
+    '/tests/view2': { component: helpers.lazyLoader('/frame/views/tests/view-2.vue.js') },
+    '/tests/form/:id?': { component: helpers.lazyLoader('/frame/views/tests/form.vue.js') },
+    '/tests/icons': { component: helpers.lazyLoader('/frame/views/tests/icons.vue.js') },
 
     // misc
-    { path: '/terms', component: helpers.lazyLoader('/frame/views/misc/terms.vue.js') },
-    { path: '/privacy', component: helpers.lazyLoader('/frame/views/misc/privacy.vue.js') },
-    { path: '/login', component: helpers.lazyLoader('/frame/views/misc/login.vue.js') },
-    { path: '/unsupported', component: helpers.lazyLoader('/frame/views/misc/unsupported.vue.js') },
-    { path: '*', component: helpers.lazyLoader('/frame/views/misc/404.vue.js') },
-];
+    '/terms': { component: helpers.lazyLoader('/frame/views/misc/terms.vue.js') },
+    '/privacy': { component: helpers.lazyLoader('/frame/views/misc/privacy.vue.js') },
+    '/login': { component: helpers.lazyLoader('/frame/views/misc/login.vue.js') },
+    '/unsupported': { component: helpers.lazyLoader('/frame/views/misc/unsupported.vue.js') },
+    '*': { component: helpers.lazyLoader('/frame/views/misc/404.vue.js') },
+};
 
-routes.map((r) => {
-    router.addRoute(r);
-});
+export const applyRoutes = (routesMapping: any) => {
+    for (let path in routesMapping) {
+        const route = routesMapping[path];
+        route.path = path;
+        router.addRoute(route);
+    }
+};
 
 export function registerEvents(app: App, router: VueRouter) {
     router.beforeEach((to, from, next) => {

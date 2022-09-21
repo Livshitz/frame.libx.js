@@ -80,6 +80,27 @@ img[disabled] { .disabled-svg; }
 
 .app-content { min-height: 80vh; }
 .app-header { border-bottom:1px solid @grayDark; }
+header {
+  .user-email {    
+    > a {
+      @media screen and (max-width: 599px){ /* xs */
+        max-width: 150px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+    margin-left: auto;
+  }
+  .navbar-burger { margin-left:0; }
+  @media screen and (min-width: 1023px) {
+    .navbar-brand {
+      flex-grow: 1;
+    }
+    .navbar-menu {
+      flex-grow: 0;
+    }
+  }
+}
 .content {  }
 
 @media screen and (min-width: 769px), print {

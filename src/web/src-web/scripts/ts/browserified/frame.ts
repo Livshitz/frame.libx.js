@@ -4,14 +4,19 @@ export type { LibxJS } from 'libx.js/build/bundles/browser.essentials';
 import { libx } from 'libx.js/build/bundles/browser.essentials';
 export { Deferred } from 'libx.js/build/helpers';
 export { DataStore } from 'libx.js/build/modules/DataStore.js';
-import { default as VueType } from 'vue';
+
 import VueDist from 'vue/dist/vue';
 import { VueConstructor } from 'vue/types/umd';
+import VueRouter from 'vue-router';
 import VueComponent from 'vue-class-component';
+import VueType from 'vue';
+import _Vue from 'vue/dist/vue';
+const Vue: typeof VueType = _Vue;
+// import * as Buefy from 'buefy';
+import Buefy from 'buefy';
+export { ToastProgrammatic as Toast } from 'buefy';
 
-const Vue: VueConstructor<Vue> = VueDist;
-
-// import {  } from 'vue/dist/vue';
+export { Vue, VueComponent, VueRouter, Buefy };
 
 export { default as snakeCase } from 'lodash/snakeCase';
 
@@ -26,12 +31,6 @@ export { default as snakeCase } from 'lodash/snakeCase';
 // import {  } from 'libx.js/bundles/browser.essentials';
 // import libx = require('libx.js/bundles/browser.essentials');
 // const Vue: Vue.VueConstructor = require('vue/dist/vue.common');
-
-import VueRouter from 'vue-router';
-
-// import * as Buefy from 'buefy';
-import Buefy from 'buefy';
-export { ToastProgrammatic as Toast } from 'buefy';
 
 export { default as lottieWeb } from 'lottie-web';
 
@@ -52,7 +51,6 @@ import { Callbacks } from 'libx.js/build/modules/Callbacks';
 import { UserManager } from 'libx.js/build/modules/firebase/UserManager';
 import { DataStore } from 'libx.js/build/modules/DataStore.js';
 
-export { Vue, VueComponent, VueRouter, Buefy };
 export { libx, Firebase, network, FireProxy, ProxyCache, DeepProxy, Cache, SHA1, Crypto, Request, Callbacks, UserManager };
 
 (() => {

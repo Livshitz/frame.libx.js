@@ -48,6 +48,10 @@ declare global {
     }
 }
 
+declare namespace Vue {
+    $router: any;
+}
+
 declare module NodeJS {
     interface Global {
         webkitSpeechRecognition: SpeechRecognition;

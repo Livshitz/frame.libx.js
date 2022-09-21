@@ -45,6 +45,7 @@ export class App {
 		viewName: null,
 		keywords: null,
 	};
+	userManager: UserManager = null;
 
 	private static _instance: App = null;;
     public static get instance(): App {
@@ -83,7 +84,9 @@ export class App {
 		App.instance.firebase.firebasePathPrefix = '/' + App.instance.name.replace(/[\s\.]/g, '-') + '/';
 
 		libx.di.register('firebase', App.instance.firebase);
-		libx.di.register('userManager', new (libx.di.get<typeof UserManager>('UserManager'))(App.instance.firebase));
+		const userManager = new (libx.di.get<typeof UserManager>('UserManager'))(App.instance.firebase);
+		libx.di.register('userManager', userManager);
+		App.instance.userManager = userManager;
 
 		Vue.use(<any>Buefy, {
 			defaultIconPack: 'fas',

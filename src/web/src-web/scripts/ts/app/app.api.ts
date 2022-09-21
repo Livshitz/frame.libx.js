@@ -55,40 +55,54 @@ export class Api {
         return p;
     }
 
-    public async listStorageFiles(path = null) {
-        let p = libx.newPromise();
-
+    public async listStorageFiles(path: string = null, bucket: string = null, recursive = false) {
         if (path == null) {
-            let userId = libx.di.modules.userManager.data.public.id; //app.user.manager.data.id;
+            let userId = app.userManager.data.public.id;
             path = `/user/${userId}/uploads`;
         }
-        var storageRef = window.firebase.storage().ref(path);
 
-        storageRef
-            .listAll()
-            .then(function (result) {
-                let items = result.items;
-                let ret = [];
-                for (let item of items) {
-                    ret.push({
-                        ref: item,
-                        name: item.name,
-                        location: item.location.path,
-                    });
-                }
-                p.resolve(ret);
-            })
-            .catch(function (error) {
-                p.reject(error);
+        var storageRef = null;
+        if (bucket) {
+            storageRef = window.firebase.app().storage(bucket).ref(path);
+        } else {
+            storageRef = window.firebase.storage().ref(path);
+        }
+
+        const result = await storageRef.listAll();
+        let items = result.items;
+        let ret = [];
+
+        const pAll = [];
+        for (const prefix of result.prefixes) {
+            const newItem = {
+                type: 'folder',
+                ref: prefix,
+                name: prefix.name,
+                location: prefix.fullPath,
+                content: null,
+            };
+            if (recursive) {
+                const p = this.listStorageFiles(prefix.fullPath, bucket);
+                p.then((subitems) => {
+                    newItem.content = subitems;
+                    ret.push(newItem);
+                });
+                pAll.push(p);
+            } else {
+                ret.push(newItem);
+            }
+        }
+        await Promise.all(pAll);
+
+        for (let item of items) {
+            ret.push({
+                type: 'file',
+                ref: item,
+                name: item.name,
+                location: item.location?.path ?? item.fullPath,
             });
-
-        // imageRef.getDownloadURL().then(function(url) {
-        // 	// TODO: Display the image on the UI
-        // }).catch(function(error) {
-        // 	// Handle any errors
-        // });
-
-        return p;
+        }
+        return ret;
     }
 
     public anonymizeName(text) {
@@ -143,6 +157,28 @@ export class Api {
                 }
             }
         });
+    }
+
+    public async showLogin(options: any = {}) {
+        const modal = app.layout.$buefy.modal.open({
+            ...options,
+            // parent: this,
+            component: Helpers.lazyLoader('/views/misc/login.vue.js'),
+            hasModalCard: true,
+            trapFocus: true,
+            props: {
+                caption: options?.caption,
+            },
+            events: {
+                loggedIn(value) {
+                    console.log('loggedIn: ', value);
+                    modal.close();
+                },
+            },
+        });
+    }
+    public async signout() {
+        return await app.userManager.signOut();
     }
 }
 
