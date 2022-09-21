@@ -149,19 +149,6 @@ export class App {
 
 		App.instance.initComponents();
 
-		/*
-		this.contentful = window.contentful.createClient({
-			// This is the space ID. A space is like a project folder in Contentful terms
-			space: 'ix10ex806ccr',
-			// This is the access token for this space. Normally you get both ID and the token in the Contentful web app
-			accessToken: 'sYfpXroiM1vKV6kyqMtQmJbE3HAf9fju3jAZ7k0Si3U',
-			// Content Preview API - access token: BLArzIbx100JT6P8mYqdtYq4pu4ECibmc6HylkV-boI
-			host: 'preview.contentful.com',
-			environment: 'master',
-			// accessToken: "GRSZuJi1D7lDVzlFLIJkBS1Ij2q_qBxlkqw0VqhFscs"
-		});
-		*/
-
 		libx.di.register('app', App.instance);
 
 		libx.log.i('frame: --- app is ready');
