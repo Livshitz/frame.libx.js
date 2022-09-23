@@ -18,6 +18,7 @@ export class PageMixin extends Vue.mixin({}) {
     }
 
     appName: string;
+    isSignedIn: boolean;
     headers?: {
         viewName?: string;
         pageTitle?: string;

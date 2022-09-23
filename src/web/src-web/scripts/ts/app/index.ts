@@ -76,6 +76,12 @@ export class App {
 		App.instance.layout = null;
 		App.instance.helpers = helpers;
 
+		Vue.use({
+			install(Vue, options) {
+				Vue.prototype.$app = App.instance;
+			},
+		});
+
 		// Initialize Firebase
 		const firebaseApp = window.firebase.initializeApp(window.projconfig.firebaseConfig);
 
@@ -87,6 +93,10 @@ export class App {
 		const userManager = new (libx.di.get<typeof UserManager>('UserManager'))(App.instance.firebase);
 		libx.di.register('userManager', userManager);
 		App.instance.userManager = userManager;
+		App.instance.userManager.onSignIn.once((data) => {
+			App.instance.layout.isSignedIn = data != null;
+			App.instance.layout.$forceUpdate();
+		});
 
 		Vue.use(<any>Buefy, {
 			defaultIconPack: 'fas',

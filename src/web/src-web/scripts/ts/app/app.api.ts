@@ -18,13 +18,12 @@ export class Api {
         let userId = 'anonymous';
         // path = 'public';
 
-        // if (app.user.manager.data == null) {
-        // 	userId = 'anonymous';
-        // 	path = 'public';
-
-        // } else {
-        // 	userId = app.user.manager.data.id;
-        // }
+        if (app.userManager.data == null) {
+            userId = 'anonymous';
+            path = 'public';
+        } else {
+            userId = app.userManager.data.public.id;
+        }
 
         let storageRef = window.firebase.storage().ref();
         let rand = Math.round(Math.random() * 1000000) + '-';

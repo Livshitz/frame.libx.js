@@ -309,7 +309,7 @@ class Bundler {
                 paths: ['./node_modules', './src/'],
                 // sourcemaps: true,
                 // esmify: true,
-                standalone: 'browserified_' + libx.randomNumber(10000),
+                standalone: true,
                 // bare: true,
                 // bundleExternal: true,
 
@@ -363,12 +363,12 @@ class Bundler {
                     // target: 'es6',
                     module: 'systemjs',
                     // include: mod.options.tsconfig.include || [],
-                    // project: tsConfig, //mod.options.tsconfig, //__dirname + '/tsconfig.json',
+                    // project: this.tsConfig, //mod.options.tsconfig, //__dirname + '/tsconfig.json',
                 },
             };
 
             pBrowserify = pax.copy(
-                [this.options.src + '/scripts/ts/browserified/*.ts', `!${this.options.src}/frame/scripts/ts/browserified/*.ts`],
+                [this.options.src + '/scripts/ts/browserified/**/*.ts', `!${this.options.src}/frame/scripts/ts/browserified/**/*.ts`],
                 `${this.options.dest}/scripts/ts/browserified`,
                 () => [
                     // pax.middlewares.ts(tsconfig.compilerOptions),

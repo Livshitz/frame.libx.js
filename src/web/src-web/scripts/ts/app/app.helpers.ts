@@ -1,7 +1,7 @@
 import { Vue, libx, Firebase, Toast, Buefy } from '/frame/scripts/ts/browserified/frame.js';
 import BuefyComponents from 'buefy/types/components';
 import UMD from 'vue/types/umd';
-import { copyJs } from '/frame/scripts/ts/browserified/frame-libs.js';
+import { copyJs } from '/frame/scripts/ts/browserified/libs.js';
 import { Dictionary } from 'libx.js/src/types/interfaces';
 
 let renderMedia = (file, title) => {

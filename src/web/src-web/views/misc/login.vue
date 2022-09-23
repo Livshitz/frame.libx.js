@@ -7,27 +7,17 @@
 					fieldset
 						legend Login/Sign-up:
 
-						div(v-if="isLoading || isInvited==null")
+						div(v-if="isLoading")
 							div.loader
 						div(v-else)
 							h2.caption.text-center {{caption}}
 
-							div(v-if="!isInvited && !isLoading")
-								div(style="max-width:600px").fg-red.
-									Access is only via invitatoin. <br/>
-									Enter invite code or send an email to enter the waiting list <a href='mailto:elya@liv.tools'>elya@liv.tools</a>...	
-								br
-								label.label Invite Code:
-									.control
-										input.is-danger(v-model='form.inviteCode', type="text", maxlength='80', autofocus, required)
-									p.help.is-danger(v-show="isInvalidCode") This invite code is invalid
-
-							div(v-if="!isSignedIn && isInvited", @submit.prevent="submit")
+							div(v-if="!isSignedIn", @submit.prevent="submit")
 								div(layout="column",layout-align="space-around center")
 									.control.margin-bottom20
-										img.google-button(src="/resources/imgs/sign_in_with_google.svg", @click="login('google')", alt="Sign In With Google").pointer
+										img.google-button(src="/frame/resources/imgs/login/sign_in_with_google.svg", @click="login('google')", alt="Sign In With Google").pointer
 									.control.margin-bottom20
-										img.google-button(src="/resources/imgs/sign_in_with_facebook.svg", @click="login('facebook')", alt="Sign In With Facebook").pointer
+										img.google-button(src="/frame/resources/imgs/login/sign_in_with_facebook.svg", @click="login('facebook')", alt="Sign In With Facebook").pointer
 									//- .control.margin-bottom20
 										.btn.bg-yellow.fg-white(@click="step='email'") Email
 
@@ -41,9 +31,7 @@
 													label.label Email:
 														.control
 															input(v-model='form.email', type="email", name="email", maxlength='80', autofocus, required)
-													div(v-if="!isInvited") 
-														h4(style="max-width:500px").fg-red Your email is not listed in the invited list. Send me an email to enter the waiting list <a href='mailto:elya@liv.tools'>elya@liv.tools</a>...
-												
+
 												.form-group
 													label.label Password:
 														.control
@@ -105,7 +93,6 @@ export default {
 			form: cache,
 			step: 'email',
 			isSignedIn: null,
-			isInvited: null,
 			isInvalidCode: false,
 			navback: this.$route?.query.navback,
 		};
@@ -219,23 +206,6 @@ export default {
 		},
 	},
 	watch: {
-		'form.inviteCode': {
-			handler: async function (val) {
-				console.log('form.inviteCode changed', val);
-				if (!val) {
-					this.isInvited = false;
-					return;
-				}
-				try {
-					// this.isInvited = await this.$app.firebase.get(`/invitations/${libx.extensions.string.hashCode.call(val)}`);
-					this.isInvited = await this.$app.firebase.get(`/invitations/${val}`);
-				} catch {
-					this.isInvited = false;
-					this.isInvalidCode = true;
-				}
-			},
-			immediate: true,
-		},
 	},
 	computed: {},
 };
