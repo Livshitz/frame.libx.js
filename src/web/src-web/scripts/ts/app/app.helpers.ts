@@ -129,12 +129,19 @@ export class Helpers {
         this.toast('Copied!', 'is-success');
     }
 
-    public static async uploadToStorage(path: string, file: any, fileName?: string, useRandomPrefix = true) {
+    public static async uploadToStorage(path: string, file: any, fileName?: string, useRandomPrefix = true, isBase64 = false) {
         let storageRef = libx.di.modules.firebase.firebaseProvider.storage().ref();
         let rand = Math.round(Math.random() * 1000000) + '-';
         const userId = libx.di.modules.userManager.data.public.id;
         let imgRef = storageRef.child(`/user/${userId}/${path}/${useRandomPrefix ? rand : ''}${fileName ?? file.name ?? ''}`);
-        let task = imgRef.put(file);
+
+        let task = null;
+        if (isBase64) {
+            task = imgRef.putString(file, 'base64', { contentType: 'image/png' });
+        } else {
+            task = imgRef.put(file);
+        }
+
         const p: any = libx.newPromise();
         p.progress = new libx.Callbacks();
         task.then(async (snapshot) => {
