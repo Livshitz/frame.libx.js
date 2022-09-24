@@ -108,25 +108,29 @@ export class Helpers {
     }
 
     public static async copyCanvasToClipboard(canvas: HTMLCanvasElement) {
-        // Can we copy a text or an image ?
-        const canWriteToClipboard = await this.askWritePermission();
+        try {
+            // Can we copy a text or an image ?
+            const canWriteToClipboard = await this.askWritePermission();
 
-        // Copy a PNG image to clipboard
-        if (canWriteToClipboard) {
-            const p = libx.newPromise();
-            await canvas.toBlob((blob) => p.resolve(blob));
-            const blob = await p;
-            await this.setToClipboard(blob);
+            // Copy a PNG image to clipboard
+            if (canWriteToClipboard) {
+                const p = libx.newPromise();
+                await canvas.toBlob((blob) => p.resolve(blob));
+                const blob = await p;
+                await this.setToClipboard(blob);
+            }
+
+            /*
+            // Copy a text to clipboard
+            if (canWriteToClipboard) {
+                const blob = new Blob(['Hello World'], { type: 'text/plain' });
+                await this.setToClipboard(blob);
+            }
+            */
+            this.toast('Copied!', 'is-success');
+        } catch (err) {
+            this.toast('Failed! Error:' + err?.message || err, 'is-fanger');
         }
-
-        /*
-		// Copy a text to clipboard
-		if (canWriteToClipboard) {
-			const blob = new Blob(['Hello World'], { type: 'text/plain' });
-			await this.setToClipboard(blob);
-		}
-		*/
-        this.toast('Copied!', 'is-success');
     }
 
     public static async uploadToStorage(path: string, file: any, fileName?: string, useRandomPrefix = true, isBase64 = false) {
