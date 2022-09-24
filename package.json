@@ -10,7 +10,7 @@
         "watch:web": "node src/web/build.js --watch",
         "format": "prettier --config .prettierrc 'src/**/*.ts' 'tests/**/*.ts' --write",
         "build": "tsc",
-        "bundle": "node build/webBundler.js --src=\"src/web/src-web\" --minify",
+        "bundle": "./fix-buefy.sh && node build/webBundler.js --src=\"src/web/src-web\" --minify",
         "bundle:watch": "yarn bundle --watch",
         "watch": "tsc -w",
         "main": "node build/Main.js",
