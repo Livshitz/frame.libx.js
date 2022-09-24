@@ -117,13 +117,7 @@ class Bundler {
             //     );
             // }
 
-            pFrame = pax.copy(
-                [this.options.src + '../../node_modules/frame.libx.js/build-web/**/*'],
-                `${this.options.dest}/frame/`,
-                () => [],
-                this.options.shouldWatch,
-                { debug: false }
-            );
+            pFrame = pax.copy([__dirname + '/../build-web/**/*'], `${this.options.dest}/frame/`, () => [], this.options.shouldWatch, { debug: false });
             // if (libx.enum.has(this.options.steps, Steps.Resources)) {
             // }
         }
