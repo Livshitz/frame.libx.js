@@ -5,7 +5,7 @@ import { Vue, VueRouter, libx, Buefy, type LibxJS, LogLevel } from '/frame/scrip
 libx.log.filterLevel = LogLevel.Debug;
 libx.log.isShowStacktrace = true;
 
-import store from '/frame/scripts/ts/app/app.store.js';
+// import store from '/frame/scripts/ts/app/app.store.js';
 import helpers from '/frame/scripts/ts/app/app.helpers.js';
 import { router, registerEvents } from '/frame/scripts/ts/app/app.routes.js';
 import { api } from '/frame/scripts/ts/app/app.api.js';
