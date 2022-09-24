@@ -28,6 +28,7 @@ jobs:
                   scope: '@octocat'
             - run: yarn --frozen-lockfile
             - run: yarn build
+            - run: yarn bundle
             - run: yarn test
             - run: yarn test:ci
               if: github.ref == 'refs/heads/master'
