@@ -31,6 +31,7 @@ export class PageMixin extends Vue.mixin({}) {
     currentPath: string;
     currentRoute: string;
     isMenuActive: boolean;
+    isReady: boolean;
     $route: any;
     $buefy: any;
 }
