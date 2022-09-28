@@ -133,7 +133,7 @@ export class App {
 			el: '#app',
 			data: {
 				pageTitle: null,
-				isReady: true,
+				isReady: false,
 				isMenuActive: false,
 				currentRoute: null,
 				currentPath: null,
@@ -145,7 +145,11 @@ export class App {
 					x: 0
 				}
 			},
-
+			mounted() {
+				setTimeout(()=>{
+					this.isReady = true;
+				},10);
+			},
 			// render (h) { return h(this.ViewComponent) },
 			router: router,
 			// render: h => h(App)
