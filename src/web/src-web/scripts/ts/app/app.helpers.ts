@@ -63,7 +63,8 @@ export class Helpers {
 
     public static toast(message, type?, position?, options?) {
         // return window.bulmaToast.toast({ message, type: type || 'is-primary', position: position || 'top-center', ...options });
-        return Toast.open({ message, type, position, ...options });
+        console.log('app:helpers:toast: ' + message, { type });
+        return Toast.open({ message, type, position, duration: 5000, ...options });
     }
 
     public static sanetize(html) {
@@ -141,7 +142,10 @@ export class Helpers {
 
         let task = null;
         if (isBase64) {
-            task = imgRef.putString(file, 'base64', { contentType: 'image/png' });
+            const mimeType = file.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/) ? file.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/)[1] : null;
+            file = file.replace(/data:image\/.+?;.+?,/, '');
+
+            task = imgRef.putString(file, 'base64', { contentType: mimeType });
         } else {
             task = imgRef.put(file);
         }
