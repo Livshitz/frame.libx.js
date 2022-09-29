@@ -26,11 +26,15 @@ export class Helpers {
         return () => System.import(url);
     }
 
-    public static updateMeta(values: any) {
+    public static updateMeta(values: any, skipPrefix = false) {
         const elms = document.querySelectorAll('head meta[__content^="{{"]');
         const _values = { ...values };
         _values.appName = _values.appName;
-        _values.pageTitle = `${_values.appName}${_values.viewName ? '/' + _values.viewName : ''}${_values.pageTitle ? ' - ' + _values.pageTitle : ''}`;
+
+        if (!skipPrefix) {
+            _values.pageTitle = `${_values.appName}${_values.viewName ? '/' + _values.viewName : ''}${_values.pageTitle ? ' - ' + _values.pageTitle : ''}`;
+        }
+
         _values.pageUrl = _values.pageUrl ?? window.location.href;
         elms.forEach((elm) => {
             const key = elm.getAttribute('__content').replace(/[{}]*/g, '');
