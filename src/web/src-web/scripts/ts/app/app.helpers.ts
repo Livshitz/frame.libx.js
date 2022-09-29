@@ -83,8 +83,12 @@ export class Helpers {
         return libx.browser.browserInfo.device.type == 'Desktop' && libx.browser.browserInfo.browser.family == 'Chrome';
     }
 
-    public static navigate(destination) {
-        window.view.$router.push(destination);
+    public static navigate(destination, keepQuery = false) {
+        if (keepQuery) {
+            window.view.$router.push({ path: destination, query: window.view.$route.query });
+        } else {
+            window.view.$router.push(destination);
+        }
     }
 
     public static bindQueryParam(paramName: string, defaultValue?: any) {
