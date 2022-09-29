@@ -64,7 +64,7 @@ export class Helpers {
     public static toast(message, type?, position?, options?) {
         // return window.bulmaToast.toast({ message, type: type || 'is-primary', position: position || 'top-center', ...options });
         console.log('app:helpers:toast: ' + message, { type });
-        return Toast.open({ message, type, position, duration: 5000, ...options });
+        return Toast.open({ message, type, position, duration: 5000, queue: false, ...options });
     }
 
     public static sanetize(html) {
