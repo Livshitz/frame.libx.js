@@ -143,11 +143,11 @@ export default {
 
 		// update here to avoid overriding when loaded as a modal
 		if (!helpers.isModal(this)) {
-			helpers.updateMeta({
+			helpers.updateMeta({...this.$app.layout.headers, ...{
 				viewName: 'Login',
 				pageTitle: 'Login',
 				desc: '',
-			});
+			}});
 			this.$forceUpdate();
 		}
 	},
