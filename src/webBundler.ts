@@ -47,6 +47,9 @@ class Bundler {
         if (libx.node.args.steps) {
             this.options.steps = this.parseSteps(libx.node.args.steps);
         }
+        if (libx.node.args.except) {
+            this.options.except = this.parseSteps(libx.node.args.except);
+        }
 
         this.tsConfig = libx.node.readJsonStripComments(this.options.src + '/../tsconfig.json');
         this.tsProject = pax.tsProject(this.options.src + '/../tsconfig.json', {});
@@ -61,11 +64,15 @@ class Bundler {
         });
     }
 
+    private shouldDoStep(step: Steps) {
+        return libx.enum.has(this.options.steps, step) && !libx.enum.has(this.options.except, step);
+    }
+
     public async build() {
         pax.config.debug = true;
         var isDev = this.options.shouldMinify == false;
 
-        if (libx.enum.has(this.options.steps, Steps.Cleanup)) {
+        if (this.shouldDoStep(Steps.Cleanup)) {
             libx.log.v('bundler: performing step', Steps[Steps.Cleanup]);
             await pax.delete(this.options.dest);
             libx.node.mkdirRecursiveSync(this.options.dest + '/styles');
@@ -90,7 +97,7 @@ class Bundler {
             pMD,
             pLibs = null;
 
-        if (libx.enum.has(this.options.steps, Steps.Frame)) {
+        if (this.shouldDoStep(Steps.Frame)) {
             libx.log.v('bundler: performing step', Steps[Steps.Frame]);
 
             // if (libx.enum.has(this.options.steps, Steps.Resources)) {
@@ -118,13 +125,21 @@ class Bundler {
             // }
 
             pFrame = pax.copy([__dirname + '/../build-web/**/*'], `${this.options.dest}/frame/`, () => [], this.options.shouldWatch, { debug: false });
+
+            pFrame = pax.copy(
+                [this.options.src + '../../node_modules/frame.libx.js/build-web/**/*'],
+                `${this.options.dest}/frame/`,
+                () => [],
+                this.options.shouldWatch,
+                { debug: false }
+            );
             // if (libx.enum.has(this.options.steps, Steps.Resources)) {
             // }
         }
 
         await Promise.all([pFrame, pBrowserifyFrame, pResourcesFrame]);
 
-        if (libx.enum.has(this.options.steps, Steps.MainJS)) {
+        if (this.shouldDoStep(Steps.MainJS)) {
             libx.log.v('bundler: performing step', Steps[Steps.MainJS]);
             var bundlerOptions = {
                 tsify: true,
@@ -151,7 +166,7 @@ class Bundler {
             );
         }
 
-        if (libx.enum.has(this.options.steps, Steps.TS)) {
+        if (this.shouldDoStep(Steps.TS)) {
             libx.log.v('bundler: performing step', Steps[Steps.TS]);
             pTs = pax.copy(
                 [this.options.src + '/scripts/ts/**/!(browserified)/*.ts', this.options.src + '/scripts/ts/*'],
@@ -174,7 +189,7 @@ class Bundler {
             );
         }
 
-        if (libx.enum.has(this.options.steps, Steps.Libs)) {
+        if (this.shouldDoStep(Steps.Libs)) {
             libx.log.v('bundler: performing step', Steps[Steps.Libs]);
             pLibs = pax.copy(
                 ['./lib/**/*.ts'],
@@ -189,7 +204,7 @@ class Bundler {
             );
         }
 
-        if (libx.enum.has(this.options.steps, Steps.Scripts)) {
+        if (this.shouldDoStep(Steps.Scripts)) {
             libx.log.v('bundler: performing step', Steps[Steps.Scripts]);
             pScripts = pax.copy(
                 [this.options.src + '/scripts/**/*.js', `!${this.options.src}/scripts/ts/**`],
@@ -202,7 +217,7 @@ class Bundler {
             );
         }
 
-        if (libx.enum.has(this.options.steps, Steps.Resources)) {
+        if (this.shouldDoStep(Steps.Resources)) {
             libx.log.v('bundler: performing step', Steps[Steps.Resources]);
 
             pResources = pax.copy([this.options.src + '/resources/**/*'], `${this.options.dest}/resources/`, () => [], this.options.shouldWatch, {
@@ -210,7 +225,7 @@ class Bundler {
             });
         }
 
-        if (libx.enum.has(this.options.steps, Steps.Manifest)) {
+        if (this.shouldDoStep(Steps.Manifest)) {
             libx.log.v('bundler: performing step', Steps[Steps.Manifest]);
             pManifest = pax.copy(
                 [this.options.src + '/manifest.json', this.options.src + '/favicon.ico', this.options.src + '/sitemap.xml'],
@@ -221,14 +236,10 @@ class Bundler {
             );
         }
 
-        if (
-            libx.enum.has(this.options.steps, Steps.Styles) ||
-            libx.enum.has(this.options.steps, Steps.StyleSCSS) ||
-            libx.enum.has(this.options.steps, Steps.StyleLess)
-        ) {
+        if (this.shouldDoStep(Steps.Styles) || this.shouldDoStep(Steps.StyleSCSS) || this.shouldDoStep(Steps.StyleLess)) {
             libx.log.v('bundler: performing step', Steps[Steps.Styles]);
 
-            if (libx.enum.has(this.options.steps, Steps.Styles) || libx.enum.has(this.options.steps, Steps.StyleSCSS)) {
+            if (this.shouldDoStep(Steps.Styles) || this.shouldDoStep(Steps.StyleSCSS)) {
                 libx.log.v('bundler: performing step', Steps[Steps.StyleSCSS]);
                 // pStyleScss = pax.copy(
                 //     [this.options.src + '/styles/*.scss'],
@@ -246,7 +257,7 @@ class Bundler {
                     { debug: false }
                 );
             }
-            if (libx.enum.has(this.options.steps, Steps.Styles) || libx.enum.has(this.options.steps, Steps.StyleLess)) {
+            if (this.shouldDoStep(Steps.Styles) || this.shouldDoStep(Steps.StyleLess)) {
                 libx.log.v('bundler: performing step', Steps[Steps.StyleLess]);
                 pStyleLess = pax.copy(
                     [this.options.src + '/styles/*.less'],
@@ -258,7 +269,7 @@ class Bundler {
             }
         }
 
-        if (libx.enum.has(this.options.steps, Steps.Vue)) {
+        if (this.shouldDoStep(Steps.Vue)) {
             libx.log.v('bundler: performing step', Steps[Steps.Vue]);
             pVue = pax.copy(
                 [this.options.src + '/**/*.vue'],
@@ -275,7 +286,7 @@ class Bundler {
             );
         }
 
-        if (libx.enum.has(this.options.steps, Steps.MD)) {
+        if (this.shouldDoStep(Steps.MD)) {
             libx.log.v('bundler: performing step', Steps[Steps.MD]);
             pMD = pax.copy(
                 [this.options.src + '/**/*.md'],
@@ -295,7 +306,7 @@ class Bundler {
 
         await Promise.all([pMain, pScripts, pTs, pBrowserify, pPug, pResources, pResourcesFrame, pStyleScss, pStyleLess, pVue, pOthers, pManifest, pMD, pLibs]);
 
-        if (libx.enum.has(this.options.steps, Steps.Browserify)) {
+        if (this.shouldDoStep(Steps.Browserify)) {
             libx.log.v('bundler: performing step', Steps[Steps.Browserify]);
 
             const browserifyOptions = {
@@ -390,7 +401,7 @@ class Bundler {
             libx.log.w('bundler: Error loading project config', ex);
         }
 
-        if (libx.enum.has(this.options.steps, Steps.Pug)) {
+        if (this.shouldDoStep(Steps.Pug)) {
             libx.log.v('bundler: performing step', Steps[Steps.Pug], this.options.shouldMinify);
             pPug = await pax.copy(
                 [this.options.src + '/**/*.pug'],
@@ -457,7 +468,7 @@ class Bundler {
         if (steps == null) return null;
 
         let ret = 0;
-        steps.split(',').map((x) => (ret = libx.enum.combine(ret, Steps[x.trim()])));
+        steps.split(',').map((x) => (ret = libx.enum.combine(ret, Steps[x.capitalize().trim()])));
 
         return ret;
     }
@@ -489,6 +500,7 @@ export class ModuleOptions {
         Steps.Libs,
         Steps.Others
     );
+    except = libx.enum.combine();
 }
 
 if (libx.node.isCalledDirectly()) {
