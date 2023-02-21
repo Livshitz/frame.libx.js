@@ -1,3 +1,5 @@
+set +e
+
 SEDOPTION="-i"
 if [[ "$OSTYPE" == "darwin"* ]]; then
   SEDOPTION="-i ''"
