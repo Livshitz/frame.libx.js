@@ -7,10 +7,9 @@ import { Buefy, libx, Vue } from '/frame/scripts/ts/browserified/frame.js';
 
 export class PageMixin extends Vue.mixin({}) {
     created() {
+        console.log('-------- PageMixin');
         const { layout } = this.$options;
         if (layout == null) return;
-
-        console.log('-------- PageMixin');
 
         // libx.merge(this.$app.layout, layout);
 

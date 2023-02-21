@@ -65,7 +65,12 @@ export class Helpers {
         return app.router.currentRoute.matched[0].instances.default;
     }
 
-    public static toast(message, type?, position?, options?) {
+    public static toast(
+        message,
+        type?: 'is-white' | 'is-black' | 'is-light' | 'is-dark' | 'is-primary' | 'is-info' | 'is-success' | 'is-warning' | 'is-danger',
+        position?: 'is-top-right' | 'is-top' | 'is-top-left' | 'is-bottom-right' | 'is-bottom' | 'is-bottom-left',
+        options?
+    ) {
         // return window.bulmaToast.toast({ message, type: type || 'is-primary', position: position || 'top-center', ...options });
         console.log('app:helpers:toast: ' + message, { type });
         return Toast.open({ message, type, position, duration: 5000, queue: false, ...options });
@@ -138,7 +143,7 @@ export class Helpers {
             */
             this.toast('Copied!', 'is-success');
         } catch (err) {
-            this.toast('Failed! Error:' + err?.message || err, 'is-fanger');
+            this.toast('Failed! Error:' + err?.message || err, 'is-danger');
         }
     }
 

@@ -175,7 +175,6 @@ export class App {
 		Vue.component('loader', helpers.lazyLoader('/components/loader.vue.js'));
 		Vue.component('editable', helpers.lazyLoader('/components/editable.vue.js'));
 		Vue.component('form-upload', helpers.lazyLoader('/components/form-upload.vue.js'));
-		Vue.component('form-upload', helpers.lazyLoader('/components/form-upload.vue.js'));
 		Vue.component('draggable', helpers.lazyLoader('/components/draggable.vue.js'));
 
 		// Vue.use(store);

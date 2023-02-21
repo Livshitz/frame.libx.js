@@ -26,8 +26,11 @@ export class Api {
         }
 
         let storageRef = window.firebase.storage().ref();
-        let rand = Math.round(Math.random() * 1000000) + '-';
-        let imgRef = storageRef.child(`/user/${userId}/${path}/${useRandomPrefix ? rand : ''}${file.name}`);
+        let rand = '-' + Math.round(Math.random() * 1000000);
+        const fileName = file.name ?? '';
+        const fileNameWithoutExtension = fileName.split('.').slice(0, -1).join('.');
+        const fileExtension = fileName.split('.').slice(1, 2).join('.');
+        let imgRef = storageRef.child(`/user/${userId}/${path}/${fileNameWithoutExtension}${useRandomPrefix ? rand : ''}.${fileExtension}`);
         let task = imgRef.put(file);
         task.then(async (snapshot) => {
             libx.log.i('app:api:uploadFile: Successfully uploaded ', snapshot?.metadata);
