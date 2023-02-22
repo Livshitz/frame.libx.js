@@ -14,5 +14,4 @@ build
 build-web
 _backup
 lib-cache
-yarn.lock
 .tmp/
