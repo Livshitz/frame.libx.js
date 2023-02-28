@@ -67,6 +67,10 @@ export { libx, Firebase, network, FireProxy, ProxyCache, DeepProxy, Cache, SHA1,
     libx.di.register('UserManager', UserManager);
     libx.di.register('Request', Request);
     libx.di.register('DataStore', DataStore);
+
+    DataStore.init().then((dataStore) => {
+        libx.di.register('dataStore', dataStore);
+    });
 })();
 
 /*
