@@ -16,6 +16,7 @@ libx.di.register('Firebase', Firebase);
 
 import { DataStore } from 'libx.js/build/modules/DataStore.js';
 libx.di.register('DataStore', DataStore);
+libx.di.register('dataStore', DataStore.init());
 
 import { FireProxy } from 'libx.js/build/modules/firebase/FireProxy';
 libx.di.register('FireProxy', FireProxy);
