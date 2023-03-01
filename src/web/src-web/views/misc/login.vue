@@ -14,15 +14,17 @@
 
 							div(v-if="!isSignedIn", @submit.prevent="submit")
 								div(layout="column",layout-align="space-around center")
-									.control.margin-bottom20
+									.control.margin-bottom20(v-if="hasProvider('google')")
 										img.google-button(src="/frame/resources/imgs/login/sign_in_with_google.svg", @click="login('google')", alt="Sign In With Google").pointer
-									.control.margin-bottom20
+									.control.margin-bottom20(v-if="hasProvider('facebook')")
 										img.google-button(src="/frame/resources/imgs/login/sign_in_with_facebook.svg", @click="login('facebook')", alt="Sign In With Facebook").pointer
+									.control.margin-bottom20(v-if="hasProvider('email')")
+										.button.btn-email(@click="showEmailForm=true", alt="Sign in with email", style="width:243px; height:51px;").pointer Sign with email
 									//- .control.margin-bottom20
 										.btn.bg-yellow.fg-white(@click="step='email'") Email
 
-									div(v-if='step=="email"').margin-top20
-										.display-1.fg-dark.text-center.small ----- Or: Sign with email -----
+									div(v-if='showEmailForm && step=="email"').margin-top20
+										//- .display-1.fg-dark.text-center.small ----- Or: Sign with email -----
 										br
 										fieldset
 											legend Email:
@@ -95,9 +97,10 @@ export default {
 			isSignedIn: null,
 			isInvalidCode: false,
 			navback: this.$route?.query.navback,
+			showEmailForm: false,
 		};
 	},
-	props: ['caption'],
+	props: ['caption', 'providers'],
 	created() {},
 	mounted() {
 		const invite = this.$route?.query.invite;
@@ -152,6 +155,10 @@ export default {
 		}
 	},
 	methods: {
+		hasProvider(providerName) {
+			if (this.providers == null || this.providers == '') return true;
+			return this.providers.indexOf(providerName) != -1
+		},
 		async submit(ev, isCancle) {
 			console.log('submitted', isCancle);
 			ev.preventDefault();
@@ -249,4 +256,5 @@ fieldset {
 }
 .content {
 }
+.btn-email { width:243px; height:51px; }
 </style>
