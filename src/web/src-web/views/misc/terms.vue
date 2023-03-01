@@ -196,7 +196,7 @@
 				h2(style='line-height: 1.3559999999999999; margin-top: 1pt; margin-bottom: 0pt;')
 					span(style='font-size: 16.5pt; font-family: Arial; color: #000000; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;') Customer Support
 				p(style='line-height: 1.3559999999999999; margin-top: 1pt; margin-bottom: 0pt;')
-					span(style='font-size: 10.5pt; font-family: Arial; color: #737980; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;') Feedox LTD, Rama 4, Tel Aviv, Israel
+					span(style='font-size: 10.5pt; font-family: Arial; color: #737980; background-color: transparent; font-weight: 400; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;') Feedox LTD, Rama 2, Tel Aviv, Israel
 				p
 					br
 					br
