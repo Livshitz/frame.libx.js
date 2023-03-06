@@ -30,7 +30,7 @@ export class App {
 	name: string;
 	api = null;
 	router = null;
-	firebase = null;
+	firebase = <IFirebase>null;
 	layout: PageMixin = null;
 	contentful = null;
 	helpers: typeof helpers = null;
