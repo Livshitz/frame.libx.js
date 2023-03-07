@@ -116,6 +116,16 @@ export default {
 			this.isSignedIn = data != null;
 			console.log('onSignIn: ', this.isSignedIn, data);
 			this.isLoading = false;
+
+			try {
+				window.FS.identify(this.$app.userManager.data.public.id, {
+					displayName: this.$app.userManager.data.public.displayName,
+					email: this.$app.userManager.data.private.email,
+				})
+			} catch(err) {
+				libx.log.e('login: Failed to identify user with FS! ', err?.message || err);
+			}
+
 			if (this.navback) this.$app.helpers.navigate(this.navback);
 			// console.log('isSignedIn: ', libx.di.modules.userManager.isSignedIn());
 		});
