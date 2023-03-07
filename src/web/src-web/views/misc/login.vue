@@ -121,9 +121,10 @@ export default {
 		});
 		app.userManager.onDataChanged.once(async (data) => {
 			console.log('onDataChanged: ', this.isSignedIn, data);
-			await libx.di.modules.dataStore.set(`/profiles/${data.id}`, {
-				email: this.form.email,
-				displayName: this.form.email,
+			await libx.di.modules.dataStore.set(`/profiles/${data.public.id}`, {
+				// email: data.private.email,
+				displayName: data.public.displayName,
+				profilePicUrl: data.public.profilePicUrl,
 				color: app.api.getRandomColor(),
 			});
 		});
