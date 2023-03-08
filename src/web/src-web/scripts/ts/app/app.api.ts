@@ -35,7 +35,7 @@ export class Api {
         task.then(async (snapshot) => {
             libx.log.i('app:api:uploadFile: Successfully uploaded ', snapshot?.metadata);
             let url = await snapshot.ref.getDownloadURL();
-            p.resolve({ url, meta: snapshot.metadata });
+            p.resolve({ url, meta: snapshot.metadata, location: snapshot.metadata?.fullPath });
         }).catch((ex) => {
             libx.log.e('app:api:uploadFile: Error: ', ex);
             p.reject(ex);
@@ -50,7 +50,7 @@ export class Api {
             (err) => p.reject(err),
             async () => {
                 let url = await task.snapshot.ref.getDownloadURL();
-                return p.resolve({ url, meta: task.snapshot.metadata });
+                return p.resolve({ url, meta: task.snapshot.metadata, location: task.snapshot.metadata?.fullPath });
             }
         );
 
