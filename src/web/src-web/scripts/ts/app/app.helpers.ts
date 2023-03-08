@@ -96,10 +96,16 @@ export class Helpers {
         }
     }
 
-    public static bindQueryParam(paramName: string, defaultValue?: any) {
+    public static bindQueryParam(paramName: string, defaultValue?: any, isBoolean = false) {
         return {
             get() {
-                return this.$route.query[paramName] ?? defaultValue;
+                let ret = this.$route.query[paramName];
+                if (isBoolean) {
+                    if (ret === 'true' || ret === true) ret = true;
+                    else if (ret == 'false' || ret === false) ret = false;
+                    else ret = defaultValue == 'true';
+                }
+                return ret;
             },
             set(value) {
                 this.$router.replace({

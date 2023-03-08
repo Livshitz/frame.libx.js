@@ -90,7 +90,7 @@ export class App {
 		App.instance.firebase.firebasePathPrefix = '/' + App.instance.name.replace(/[\s\.]/g, '-') + '/';
 
 		libx.di.register('firebase', App.instance.firebase);
-		const userManager = new (libx.di.get<typeof UserManager>('UserManager'))(App.instance.firebase);
+		const userManager = new (libx.di.get<typeof UserManager>('UserManager'))(<any>App.instance.firebase);
 		libx.di.register('userManager', userManager);
 		App.instance.userManager = userManager;
 		App.instance.userManager.onSignIn.once((data) => {
