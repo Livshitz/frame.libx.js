@@ -1,6 +1,6 @@
 // import { libx, LibxJS } from 'libx.js/build/bundles/browser.essentials';
 // import type { LibxJS } from 'libx.js';
-import { Vue, VueRouter, libx, Buefy, type LibxJS, LogLevel } from '/frame/scripts/ts/browserified/frame.js';
+import { Vue, VueRouter, libx, Buefy, type LibxJS, LogLevel, Callbacks } from '/frame/scripts/ts/browserified/frame.js';
 
 libx.log.filterLevel = LogLevel.Debug;
 libx.log.isShowStacktrace = true;
@@ -134,6 +134,7 @@ export class App {
 			data: {
 				pageTitle: null,
 				isReady: false,
+				onReady: new Callbacks(),
 				isMenuActive: false,
 				currentRoute: null,
 				currentPath: null,
@@ -148,6 +149,7 @@ export class App {
 			mounted() {
 				setTimeout(()=>{
 					this.isReady = true;
+					this.onReady.trigger();
 				},10);
 			},
 			// render (h) { return h(this.ViewComponent) },

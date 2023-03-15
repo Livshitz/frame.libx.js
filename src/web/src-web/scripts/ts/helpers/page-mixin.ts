@@ -1,5 +1,5 @@
 import helpers from '/frame/scripts/ts/app/app.helpers.js';
-import { Buefy, libx, Vue } from '/frame/scripts/ts/browserified/frame.js';
+import { Buefy, libx, Vue, Callbacks } from '/frame/scripts/ts/browserified/frame.js';
 
 // export default {
 
@@ -31,6 +31,7 @@ export class PageMixin extends Vue.mixin({}) {
     currentRoute: string;
     isMenuActive: boolean;
     isReady: boolean;
+    onReady: Callbacks;
     $route: any;
     $buefy: any;
 }
