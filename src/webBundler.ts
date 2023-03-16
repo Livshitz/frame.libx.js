@@ -13,7 +13,7 @@ libx.node.catchErrors((err) => {
     });
 });
 
-enum Steps {
+export enum Steps {
     // ALL = 1 << 0, // 0000,
     Cleanup = 1 << 1, // 0001,
     Frame = 1 << 2, // 0010,
@@ -33,7 +33,7 @@ enum Steps {
     Pug = 1 << 16,
 }
 
-class Bundler {
+export class Bundler {
     private tsConfig;
     private tsProject;
 
@@ -482,23 +482,25 @@ export class ModuleOptions {
     shouldWatch = libx.node.args.watch || false;
     shouldMinify = libx.node.args.minify || false;
     shouldServe = libx.node.args.serve || false;
-    steps = libx.enum.combine(
-        Steps.Cleanup,
-        Steps.Frame,
-        Steps.MainJS,
-        Steps.Scripts,
-        Steps.TS,
-        Steps.Browserify,
-        Steps.Pug,
-        Steps.Resources,
-        Steps.StyleLess,
-        Steps.StyleSCSS,
-        Steps.Vue,
-        Steps.Manifest,
-        Steps.MD,
-        Steps.Manifest,
-        Steps.Libs,
-        Steps.Others
+    steps = <Steps>(
+        libx.enum.combine(
+            Steps.Cleanup,
+            Steps.Frame,
+            Steps.MainJS,
+            Steps.Scripts,
+            Steps.TS,
+            Steps.Browserify,
+            Steps.Pug,
+            Steps.Resources,
+            Steps.StyleLess,
+            Steps.StyleSCSS,
+            Steps.Vue,
+            Steps.Manifest,
+            Steps.MD,
+            Steps.Manifest,
+            Steps.Libs,
+            Steps.Others
+        )
     );
     except = libx.enum.combine();
 }
