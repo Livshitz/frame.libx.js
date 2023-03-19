@@ -9438,10 +9438,10 @@ pause-stream@^0.0.11:
   dependencies:
     through "~2.3"
 
-pax.libx.js@^0.6.21:
-  version "0.6.21"
-  resolved "https://registry.yarnpkg.com/pax.libx.js/-/pax.libx.js-0.6.21.tgz#ecbdf479fac4c8c4f283307a58565f9371b7448a"
-  integrity sha512-fr3cWevDEVmwqWjdL2lbchlbW/I1GNA+349neh93ws3FOOZKPjDpXNihN+xC9lfkIPVIEueDl5X00OEDVInwXg==
+pax.libx.js@^0.6.22:
+  version "0.6.22"
+  resolved "https://registry.yarnpkg.com/pax.libx.js/-/pax.libx.js-0.6.22.tgz#cf842ea22427f693d89877453f3415de3064a1b7"
+  integrity sha512-bJ1smrT1z/djJWAS2m7EjGiv9fnsKBmKJXYeUK9gEDWw2pU4PgoVtZfQicljZlYBXwn4sD5UcdD5+VE6wvS9tQ==
   dependencies:
     "@babel/cli" "7"
     "@babel/core" "^7.18.5"
