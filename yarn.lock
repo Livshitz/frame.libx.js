@@ -8073,10 +8073,10 @@ leven@^3.1.0:
   resolved "https://registry.yarnpkg.com/leven/-/leven-3.1.0.tgz#77891de834064cccba82ae7842bb6b14a13ed7f2"
   integrity sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==
 
-libx.js@^2.34.1:
-  version "2.34.1"
-  resolved "https://registry.yarnpkg.com/libx.js/-/libx.js-2.34.1.tgz#4a1ba4c0e3f17c6464bd65e54e98f024eac6c44e"
-  integrity sha512-wof+S7hagmK0zce0QWVUa1qWZKXwpKdbHczZyzi24xieDD9hez6m/J0FFUoYQsMnomy7BA3DoprGF4Ds570s/Q==
+libx.js@^2.34.3:
+  version "2.34.3"
+  resolved "https://registry.yarnpkg.com/libx.js/-/libx.js-2.34.3.tgz#ea5c823258e09efc41292db5c439f6c5ce97d2e9"
+  integrity sha512-HIwuKU1eywwmUbVJwqVxLhRrofgQBw1QRNx+eL0qhgwuClxUX6TtYHLneSmsaOgOnCFAxA2HGnzXdWwbfMlH3A==
   dependencies:
     axios "^0.21.3"
     concurrency.libx.js "^1.1.1"
@@ -9438,10 +9438,10 @@ pause-stream@^0.0.11:
   dependencies:
     through "~2.3"
 
-pax.libx.js@^0.6.23:
-  version "0.6.23"
-  resolved "https://registry.yarnpkg.com/pax.libx.js/-/pax.libx.js-0.6.23.tgz#13a5db55515cdd27003d37b118b9db30a9b2aafc"
-  integrity sha512-GuobOdwVLpuuk/Uk2o1OOptggHwgf/vwdxse1+DbAqCE3FyGMXhhKbXkH5cL+4x9CW/m7TNDc7W24VcIKa2SJg==
+pax.libx.js@^0.6.24:
+  version "0.6.24"
+  resolved "https://registry.yarnpkg.com/pax.libx.js/-/pax.libx.js-0.6.24.tgz#067843f4afe75fdbe5f3e17ad17e255a1096e466"
+  integrity sha512-obuS63NfXr5l5fqEPFDwUvnmrnpph97KB44+BM/+lmAK9FkYdN3i5i6b/PffY3pykDDm0UrnHnEg2m4tXjwnQA==
   dependencies:
     "@babel/cli" "7"
     "@babel/core" "^7.18.5"
@@ -9490,7 +9490,7 @@ pax.libx.js@^0.6.23:
     jest "^28.1.1"
     less "^4.1.3"
     less-plugin-sass2less "^1.2.0"
-    libx.js "^2.34.1"
+    libx.js "^2.34.3"
     node-sass "^7.0.3"
     pug "^3.0.2"
     readable-stream "^3.6.0"
