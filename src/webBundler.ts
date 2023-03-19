@@ -5,6 +5,8 @@ import path from 'path';
 import fs from 'fs';
 
 libx.log.isShowStacktrace = false;
+// libx.log.isDebug = true;
+// libx.log.filterLevel = libx.log.severities.All;
 libx.node.catchErrors((err) => {
     console.log('error!', {
         message: err?.message?.toString(),
