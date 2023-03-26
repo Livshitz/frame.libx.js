@@ -143,21 +143,23 @@ export class Api {
         };
 
         libx.log.v('app.api.version.watch: Starting watching version...');
-        return await libx.di.modules.firebase.listen(path, async (newVal) => {
-            if (this.currentVersion == null) this.currentVersion = newVal;
-            else {
-                libx.log.i('app.api.version.watch: Version was changed, requesting to reload');
-                if (parse(newVal) > parse(this.currentVersion)) {
-                    libx.log.w('Helpers:listenToVersion: Detected newer version!', this.currentVersion);
-                    // let response = await app.api.showConfirm('App was updated', 'The webapp was updated, you must reload the page. Reload now?');
-                    Helpers.toast('New version is available, please save your changes and reload the page', 'is-warning', 'is-top', { indefinite: true });
-                    // if (response == true) bundular.reload();
-                    // else {
-                    // 	libx.log.w('app.api.version.watch: User declined reload!');
-                    // 	alert('WARNING! Please note to reload the page as soon as possible as you may experience really weird stuff when your version is outdated!')
-                    // }
+        return libx.di.inject((firebase) => {
+            firebase.listen(path, async (newVal) => {
+                if (this.currentVersion == null) this.currentVersion = newVal;
+                else {
+                    libx.log.i('app.api.version.watch: Version was changed, requesting to reload');
+                    if (parse(newVal) > parse(this.currentVersion)) {
+                        libx.log.w('Helpers:listenToVersion: Detected newer version!', this.currentVersion);
+                        // let response = await app.api.showConfirm('App was updated', 'The webapp was updated, you must reload the page. Reload now?');
+                        Helpers.toast('New version is available, please save your changes and reload the page', 'is-warning', 'is-top', { indefinite: true });
+                        // if (response == true) bundular.reload();
+                        // else {
+                        // 	libx.log.w('app.api.version.watch: User declined reload!');
+                        // 	alert('WARNING! Please note to reload the page as soon as possible as you may experience really weird stuff when your version is outdated!')
+                        // }
+                    }
                 }
-            }
+            });
         });
     }
 

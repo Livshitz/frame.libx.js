@@ -82,21 +82,23 @@ export class App {
 			},
 		});
 
-		// Initialize Firebase
-		const firebaseApp = window.firebase.initializeApp(window.projconfig.firebaseConfig);
+		if (window.projconfig.firebaseConfig) {
+			// Initialize Firebase
+			const firebaseApp = window.firebase.initializeApp(window.projconfig.firebaseConfig);
 
-		// Register general dependencies:
-		App.instance.firebase = new (libx.di.get('Firebase'))(firebaseApp, window.firebase);
-		App.instance.firebase.firebasePathPrefix = '/' + App.instance.name.replace(/[\s\.]/g, '-') + '/';
+			// Register general dependencies:
+			App.instance.firebase = new (libx.di.get('Firebase'))(firebaseApp, window.firebase);
+			App.instance.firebase.firebasePathPrefix = '/' + App.instance.name.replace(/[\s\.]/g, '-') + '/';
 
-		libx.di.register('firebase', App.instance.firebase);
-		const userManager = new (libx.di.get<typeof UserManager>('UserManager'))(<any>App.instance.firebase);
-		libx.di.register('userManager', userManager);
-		App.instance.userManager = userManager;
-		App.instance.userManager.onSignIn.once((data) => {
-			App.instance.layout.isSignedIn = data != null;
-			App.instance.layout.$forceUpdate();
-		});
+			libx.di.register('firebase', App.instance.firebase);
+			const userManager = new (libx.di.get<typeof UserManager>('UserManager'))(<any>App.instance.firebase);
+			libx.di.register('userManager', userManager);
+			App.instance.userManager = userManager;
+			App.instance.userManager.onSignIn.once((data) => {
+				App.instance.layout.isSignedIn = data != null;
+				App.instance.layout.$forceUpdate();
+			});
+		}
 
 		Vue.use(<any>Buefy, {
 			defaultIconPack: 'fas',

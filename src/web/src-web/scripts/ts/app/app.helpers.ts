@@ -218,32 +218,6 @@ export class Helpers {
         });
     }
 
-    public static async listenToVersion(path: string = '/version') {
-        const parse = (ver) => {
-            let parts = ver.split('.');
-            let value = parts[0] * 1000000 + parts[1] * 1000 + parts[2] * 1; // support version with 3 digits at most
-            return value;
-        };
-
-        libx.log.v('app.api.version.watch: Starting watching version...');
-        return await libx.di.modules.firebase.listen('/version', async (newVal) => {
-            if (Helpers.appVersion == null) Helpers.appVersion = newVal;
-            else {
-                libx.log.i('app.api.version.watch: Version was changed, requesting to reload');
-                if (parse(newVal) > parse(Helpers.appVersion)) {
-                    libx.log.w('Helpers:listenToVersion: Detected newer version!', Helpers.appVersion);
-                    // let response = await app.api.showConfirm('App was updated', 'The webapp was updated, you must reload the page. Reload now?');
-                    Helpers.toast('New version is available, please save your changes and reload the page', 'is-warning', 'is-top', { indefinite: true });
-                    // if (response == true) bundular.reload();
-                    // else {
-                    // 	libx.log.w('app.api.version.watch: User declined reload!');
-                    // 	alert('WARNING! Please note to reload the page as soon as possible as you may experience really weird stuff when your version is outdated!')
-                    // }
-                }
-            }
-        });
-    }
-
     public static hasQueryParam(param: string) {
         return app.layout.$route.query.hasOwnProperty(param);
     }

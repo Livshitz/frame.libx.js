@@ -76,7 +76,7 @@ export function registerEvents(app: App, router: VueRouter) {
         app.layout.currentPath = window.location.pathname;
         app.layout.currentRoute = app.router?.currentRoute?.matched[0]?.path;
         app.layout.isMenuActive = false;
-        if (!libx.isEmpty({ ...app.userManager.data })) app.userManager.onSignIn.trigger(app.userManager.data);
+        if (!libx.isEmpty({ ...app.userManager?.data })) app.userManager.onSignIn.trigger(app.userManager?.data);
 
         setTimeout(() => {
             window.view = to.matched[0].instances.default;
