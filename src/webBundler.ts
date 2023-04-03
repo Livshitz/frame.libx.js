@@ -422,7 +422,7 @@ export class Bundler {
 
         if (this.options.shouldServe) {
             libx.log.v('bundler: starting serving...');
-            var port = 3010;
+            var port = projectConfig?.private?.post || 3010;
             pax.config.devServer.livePort = projectConfig?.private?.livereloadPort || 35731;
             pax.config.devServer.reloadGraceMS = 200;
             pax.config.devServer.reloadDebounceMS = 500;
