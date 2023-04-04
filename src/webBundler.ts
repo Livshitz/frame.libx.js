@@ -315,7 +315,7 @@ export class Bundler {
                 // useStream: true,
                 paths: ['./node_modules', './src/'],
                 // sourcemaps: true,
-                // esmify: true,
+                esmify: libx.node.args.esmify || false,
                 standalone: true,
                 // bare: true,
                 // bundleExternal: true,
