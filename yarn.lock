@@ -8093,6 +8093,26 @@ libx.js@^2.34.3:
     xregexp "^5.0.2"
     yargs "^17.2.1"
 
+libx.js@^2.35.1:
+  version "2.35.1"
+  resolved "https://registry.yarnpkg.com/libx.js/-/libx.js-2.35.1.tgz#b57d06220f7f9b4a3c2bd545278896ee0b1af806"
+  integrity sha512-cSL0vbo/pUVVx2qpOJ7WNwC2BI9oB/xwy+hrxMkUgvd+AbLXWqacl5A9R4U+mthU+vg/TDAuivpwBfhBfklhlA==
+  dependencies:
+    axios "^0.21.3"
+    concurrency.libx.js "^1.1.1"
+    cors "^2.8.5"
+    crypto-js "^4.0.0"
+    detect.js "^2.2.3"
+    di.libx.js "^2.3.1"
+    form-data "^4.0.0"
+    glob "^7.2.0"
+    lodash "^4.17.21"
+    prompt "^1.1.0"
+    rxjs "^6.6.3"
+    rxjs-compat "^6.6.7"
+    xregexp "^5.0.2"
+    yargs "^17.2.1"
+
 liftoff@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/liftoff/-/liftoff-3.1.0.tgz#c9ba6081f908670607ee79062d700df062c52ed3"
