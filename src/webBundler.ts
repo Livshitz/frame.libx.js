@@ -284,7 +284,7 @@ export class Bundler {
                     pax.middlewares.if(this.options.shouldMinify, pax.middlewares.minify()),
                 ],
                 this.options.shouldWatch,
-                { debug: false, useSourceDir: true, base: this.options.src }
+                { debug: false }
             );
         }
 
