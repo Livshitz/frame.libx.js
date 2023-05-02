@@ -427,7 +427,7 @@ export class Bundler {
             pax.config.devServer.reloadGraceMS = 200;
             pax.config.devServer.reloadDebounceMS = 500;
             pax.config.devServer.useHttps = libx.node.args.secure || projectConfig?.private?.useHttps;
-            libx.log.info(`test: serving... http://0.0.0.0:${port}/index.html`);
+            libx.log.info(`test: serving... http://${projectConfig?.private?.host ?? '0.0.0.0'}:${port}/index.html`);
             pax.serve(this.options.dest, { port: port }, [this.options.dest + '/**/*'], () => {
                 pax.middlewares.liveReload();
             });
