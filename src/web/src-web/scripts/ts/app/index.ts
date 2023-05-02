@@ -6,7 +6,7 @@ libx.log.filterLevel = LogLevel.Debug;
 libx.log.isShowStacktrace = true;
 
 import store from '/frame/scripts/ts/app/app.store.js';
-import helpers from '/frame/scripts/ts/app/app.helpers.js';
+import Helpers from '/frame/scripts/ts/app/app.helpers.js';
 import { router, registerEvents } from '/frame/scripts/ts/app/app.routes.js';
 import { api } from '/frame/scripts/ts/app/app.api.js';
 import { CombinedVueInstance, ExtendedVue } from 'vue/types/vue';
@@ -33,7 +33,7 @@ export class App {
 	firebase = <IFirebase>null;
 	layout: PageMixin = null;
 	contentful = null;
-	helpers: typeof helpers = null;
+	helpers: typeof Helpers = null;
 	originalHeaders = {
 		appName: null,
 		desc: null,
@@ -74,7 +74,7 @@ export class App {
 		App.instance.router = router; //System.import('/frame/scripts/app.routers.js'),
 		App.instance.firebase = libx.di.get<IFirebase>('firebase');
 		App.instance.layout = null;
-		App.instance.helpers = helpers;
+		App.instance.helpers = Helpers;
 
 		Vue.use({
 			install(Vue, options) {
@@ -140,7 +140,7 @@ export class App {
 				isMenuActive: false,
 				currentRoute: null,
 				currentPath: null,
-				isSupported: helpers.isBrowserSupported(),
+				isSupported: Helpers.isBrowserSupported(),
 				appName: 'frame.libx.js',
 				headers: null,
 				position: {
@@ -175,11 +175,11 @@ export class App {
 	}
 
 	initComponents() {
-		Vue.component('animation', helpers.lazyLoader('/components/animation.vue.js'));
-		Vue.component('loader', helpers.lazyLoader('/components/loader.vue.js'));
-		Vue.component('editable', helpers.lazyLoader('/components/editable.vue.js'));
-		Vue.component('form-upload', helpers.lazyLoader('/components/form-upload.vue.js'));
-		Vue.component('draggable', helpers.lazyLoader('/components/draggable.vue.js'));
+		Vue.component('animation', Helpers.lazyLoader('/components/animation.vue.js'));
+		Vue.component('loader', Helpers.lazyLoader('/components/loader.vue.js'));
+		Vue.component('editable', Helpers.lazyLoader('/components/editable.vue.js'));
+		Vue.component('form-upload', Helpers.lazyLoader('/components/form-upload.vue.js'));
+		Vue.component('draggable', Helpers.lazyLoader('/components/draggable.vue.js'));
 
 		// Vue.use(store);
 	}
