@@ -28,7 +28,7 @@ export const router = new VueRouter({
 
         if (savedPosition) return savedPosition;
         // return { x: app.layout.position.x, y: app.layout.position.y };
-        if (from.path == to.path || from.matched?.[0]?.path == to.matched?.[0]?.path) return { x: app.layout.position.x, y: app.layout.position.y };
+        if (from.path == to.path || from.matched?.[0]?.path == to.matched?.[0]?.path) return { x: app.layout?.position?.x, y: app.layout?.position?.y };
         return { x: 0, y: 0 };
     },
 });
