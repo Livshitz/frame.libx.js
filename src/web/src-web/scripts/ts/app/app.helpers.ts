@@ -113,7 +113,7 @@ export class Helpers {
                         ...this.$route.query,
                         [paramName]: value,
                     },
-                    params: { savePosition: true },
+                    // params: { savePosition: true },
                 });
             },
         };
