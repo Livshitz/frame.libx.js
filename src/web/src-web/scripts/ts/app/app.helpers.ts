@@ -52,7 +52,7 @@ export class Helpers {
     public static lazyLoadAnonComponent(url, componentName = null) {
         if (componentName == null) componentName = 'anon-component-' + libx.randomNumber();
         return Vue.component(componentName, async () => {
-            console.log('--- test');
+            // console.log('--- test');
             return await System.import(url); //libx.browser.require(url)
         });
     }
