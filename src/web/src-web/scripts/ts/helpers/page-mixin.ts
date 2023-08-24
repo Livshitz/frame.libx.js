@@ -1,5 +1,6 @@
 import helpers from '/frame/scripts/ts/app/app.helpers.js';
 import { Buefy, libx, Vue, Callbacks } from '/frame/scripts/ts/browserified/frame.js';
+// import { DynamicProps } from 'libx.js/src/types/interfaces';
 
 // export default {
 
@@ -16,6 +17,7 @@ export class PageMixin extends Vue.mixin({}) {
         // helpers.updateMeta(this.$app.layout.headers);
     }
 
+    curProject?: string;
     appName: string;
     isSignedIn: boolean;
     headers?: {
