@@ -12,6 +12,7 @@ import { api } from '/frame/scripts/ts/app/app.api.js';
 import { CombinedVueInstance, ExtendedVue } from 'vue/types/vue';
 import { PageMixin } from '/frame/scripts/ts/helpers/page-mixin.js';
 import { Log } from 'libx.js/build/modules/log';
+import { ObjectLiteral } from 'libx.js/src/types/interfaces';
 import { UserManager } from 'libx.js/build/modules/firebase/UserManager';
 import { DynamicProperties, IFirebase } from 'libx.js/build/types/interfaces';
 import UMD from 'vue/types/umd';
@@ -27,27 +28,27 @@ Vue.config.productionTip = false;
 // }
 
 export class App {
-	name: string;
-	api = null;
-	router = null;
-	firebase = <IFirebase>null;
-	layout: PageMixin = null;
-	contentful = null;
-	helpers: typeof Helpers = null;
-	originalHeaders = {
-		appName: null,
-		desc: null,
-		pageUrl: null,
-		image: null,
-		appStoreId: null,
-		deepLink: null,
-		facebookAppId: null,
-		viewName: null,
-		keywords: null,
-	};
-	userManager: UserManager = null;
+    name: string;
+    api = null;
+    router = null;
+    firebase = <IFirebase>null;
+    layout: PageMixin & ObjectLiteral = null;
+    contentful = null;
+    helpers: typeof Helpers = null;
+    originalHeaders = {
+        appName: null,
+        desc: null,
+        pageUrl: null,
+        image: null,
+        appStoreId: null,
+        deepLink: null,
+        facebookAppId: null,
+        viewName: null,
+        keywords: null,
+    };
+    userManager: UserManager = null;
 
-	private static _instance: App = null;;
+    private static _instance: App = null;
     public static get instance(): App {
         return this._instance;
     }
@@ -55,134 +56,134 @@ export class App {
         this._instance = value;
     }
 
-	constructor() {
-		libx.log.v('frame:App:ctor');
-	}
+    constructor() {
+        libx.log.v('frame:App:ctor');
+    }
 
-	resetHeaders() {
-		this.layout.headers = libx.clone(this.originalHeaders);
-		this.helpers.updateMeta(this.layout.headers);
-	}
+    resetHeaders() {
+        this.layout.headers = libx.clone(this.originalHeaders);
+        this.helpers.updateMeta(this.layout.headers);
+    }
 
-	public static async init() {
-		App.instance = new App();
-		libx.log.v('frame:app:init');
+    public static async init() {
+        App.instance = new App();
+        libx.log.v('frame:app:init');
 
-		App.instance.name = window.projconfig.projectCaption;
-		App.instance.originalHeaders.appName = App.instance.name;
-		App.instance.api = api;
-		App.instance.router = router; //System.import('/frame/scripts/app.routers.js'),
-		App.instance.firebase = libx.di.get<IFirebase>('firebase');
-		App.instance.layout = null;
-		App.instance.helpers = Helpers;
+        App.instance.name = window.projconfig.projectCaption;
+        App.instance.originalHeaders.appName = App.instance.name;
+        App.instance.api = api;
+        App.instance.router = router; //System.import('/frame/scripts/app.routers.js'),
+        App.instance.firebase = libx.di.get<IFirebase>('firebase');
+        App.instance.layout = null;
+        App.instance.helpers = Helpers;
 
-		Vue.use({
-			install(Vue, options) {
-				Vue.prototype.$app = App.instance;
-			},
-		});
+        Vue.use({
+            install(Vue, options) {
+                Vue.prototype.$app = App.instance;
+            },
+        });
 
-		if (window.projconfig.firebaseConfig) {
-			// Initialize Firebase
-			const firebaseApp = window.firebase.initializeApp(window.projconfig.firebaseConfig);
+        if (window.projconfig.firebaseConfig) {
+            // Initialize Firebase
+            const firebaseApp = window.firebase.initializeApp(window.projconfig.firebaseConfig);
 
-			// Register general dependencies:
-			App.instance.firebase = new (libx.di.get('Firebase'))(firebaseApp, window.firebase);
-			App.instance.firebase.firebasePathPrefix = '/' + App.instance.name.replace(/[\s\.]/g, '-') + '/';
+            // Register general dependencies:
+            App.instance.firebase = new (libx.di.get('Firebase'))(firebaseApp, window.firebase);
+            App.instance.firebase.firebasePathPrefix = '/' + App.instance.name.replace(/[\s\.]/g, '-') + '/';
 
-			libx.di.register('firebase', App.instance.firebase);
-			const userManager = new (libx.di.get<typeof UserManager>('UserManager'))(<any>App.instance.firebase);
-			libx.di.register('userManager', userManager);
-			App.instance.userManager = userManager;
-			App.instance.userManager.onSignIn.once((data) => {
-				App.instance.layout.isSignedIn = data != null;
-				App.instance.layout.$forceUpdate();
-			});
-		}
+            libx.di.register('firebase', App.instance.firebase);
+            const userManager = new (libx.di.get<typeof UserManager>('UserManager'))(<any>App.instance.firebase);
+            libx.di.register('userManager', userManager);
+            App.instance.userManager = userManager;
+            App.instance.userManager.onSignIn.once((data) => {
+                App.instance.layout.isSignedIn = data != null;
+                App.instance.layout.$forceUpdate();
+            });
+        }
 
-		Vue.use(<any>Buefy, {
-			defaultIconPack: 'fas',
-			rtl: false,
-		});
+        Vue.use(<any>Buefy, {
+            defaultIconPack: 'fas',
+            rtl: false,
+        });
 
-		libx.di.inject((log: Log, network, activityLog, myModule) => {
-			log.isDebug = false;
-			log.isShowStacktrace = true;
-			log.debug('net: ', network, activityLog);
-		});
+        libx.di.inject((log: Log, network, activityLog, myModule) => {
+            log.isDebug = false;
+            log.isShowStacktrace = true;
+            log.debug('net: ', network, activityLog);
+        });
 
-		Vue.mixin(PageMixin);
+        Vue.mixin(PageMixin);
 
-		// const TestComp2 = Vue.component("test", () => {
-		// 	console.log('--- test')
-		// 	var p = System.import('/components/prompt.vue.js')
-		// 	return p;
-		// });
-		// const Foo = () => import('./Foo.vue')
+        // const TestComp2 = Vue.component("test", () => {
+        // 	console.log('--- test')
+        // 	var p = System.import('/components/prompt.vue.js')
+        // 	return p;
+        // });
+        // const Foo = () => import('./Foo.vue')
 
-		// var fooComponent2 = { template: '<div>Home</div>' }
+        // var fooComponent2 = { template: '<div>Home</div>' }
 
-		// let fooComponent = {
-		// 	data: function () {
-		// 		return {
-		// 			count: 0
-		// 		}
-		// 	},
-		// 	template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
-		// };
+        // let fooComponent = {
+        // 	data: function () {
+        // 		return {
+        // 			count: 0
+        // 		}
+        // 	},
+        // 	template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+        // };
 
-		App.instance.layout = new Vue({
-			el: '#app',
-			data: {
-				pageTitle: null,
-				isReady: false,
-				onReady: new Callbacks(),
-				isMenuActive: false,
-				currentRoute: null,
-				currentPath: null,
-				isSupported: Helpers.isBrowserSupported(),
-				appName: 'frame.libx.js',
-				headers: null,
-				position: {
-					y: 0,
-					x: 0
-				}
-			},
-			mounted() {
-				setTimeout(()=>{
-					this.isReady = true;
-					this.onReady.trigger();
-				},10);
-			},
-			// render (h) { return h(this.ViewComponent) },
-			router: router,
-			// render: h => h(App)
-			components: {},
-		});
-		App.instance.resetHeaders();
+        App.instance.layout = new Vue(<any>{
+            el: '#app',
+            data: {
+                pageTitle: null,
+                isReady: false,
+                onReady: new Callbacks(),
+                isMenuActive: false,
+                currentRoute: null,
+                currentPath: null,
+                isSupported: Helpers.isBrowserSupported(),
+                appName: 'frame.libx.js',
+                headers: null,
+                position: {
+                    y: 0,
+                    x: 0,
+                },
+            },
+            mounted() {
+                setTimeout(() => {
+                    this.isReady = true;
+                    this.onReady.trigger();
+                }, 10);
+            },
+            // render (h) { return h(this.ViewComponent) },
+            router: router,
+            // render: h => h(App)
+            components: {},
+        });
+        App.instance.resetHeaders();
 
-		registerEvents(App.instance, router);
+        registerEvents(App.instance, router);
 
-		// api.listenToVersion();
+        // api.listenToVersion();
 
-		App.instance.initComponents();
+        App.instance.initComponents();
 
-		libx.di.register('app', App.instance);
+        libx.di.register('app', App.instance);
 
-		libx.log.i('frame: --- app is ready');
+        libx.log.i('frame: --- app is ready');
 
-		return App.instance;
-	}
+        return App.instance;
+    }
 
-	initComponents() {
-		Vue.component('animation', Helpers.lazyLoader('/components/animation.vue.js'));
-		Vue.component('loader', Helpers.lazyLoader('/components/loader.vue.js'));
-		Vue.component('editable', Helpers.lazyLoader('/components/editable.vue.js'));
-		Vue.component('form-upload', Helpers.lazyLoader('/components/form-upload.vue.js'));
-		Vue.component('draggable', Helpers.lazyLoader('/components/draggable.vue.js'));
+    initComponents() {
+        Vue.component('animation', Helpers.lazyLoader('/components/animation.vue.js'));
+        Vue.component('loader', Helpers.lazyLoader('/components/loader.vue.js'));
+        Vue.component('editable', Helpers.lazyLoader('/components/editable.vue.js'));
+        Vue.component('form-upload', Helpers.lazyLoader('/components/form-upload.vue.js'));
+        Vue.component('draggable', Helpers.lazyLoader('/components/draggable.vue.js'));
 
-		// Vue.use(store);
-	}
+        // Vue.use(store);
+    }
 }
 
 export { PageMixin };
