@@ -8093,10 +8093,10 @@ libx.js@^2.34.3:
     xregexp "^5.0.2"
     yargs "^17.2.1"
 
-libx.js@^2.36.0:
-  version "2.36.0"
-  resolved "https://registry.yarnpkg.com/libx.js/-/libx.js-2.36.0.tgz#f56f1d2dc4ada0edb82d197f0c63281a779ca35f"
-  integrity sha512-H3omdtwpxoL67lNc3XPCfTpIsZEMCMmIk+A0NfwOTUMExXWQsosN3GChDoDOvKTEiYWcys0wIWXrtEnft7iCow==
+libx.js@^2.36.1:
+  version "2.36.1"
+  resolved "https://registry.yarnpkg.com/libx.js/-/libx.js-2.36.1.tgz#797c39cd927aa7e66af93a96c0804180a1fb22a0"
+  integrity sha512-UNMPYvhaGbUezYwrW2Kl3YDNW3AF4quJd9d7DX+qD2xaTC1gYkDO6xUhqqBrcBw2uKtD3cLR/OMT3tDn3hX8Rg==
   dependencies:
     axios "^0.21.3"
     concurrency.libx.js "^1.1.1"
@@ -8110,6 +8110,7 @@ libx.js@^2.36.0:
     prompt "^1.1.0"
     rxjs "^6.6.3"
     rxjs-compat "^6.6.7"
+    web-streams-polyfill "^3.2.1"
     xregexp "^5.0.2"
     yargs "^17.2.1"
 
@@ -12040,6 +12041,11 @@ walker@^1.0.8:
   integrity sha512-ts/8E8l5b7kY0vlWLewOkDXMmPdLcVV4GmOQLyxuSswIJsweeFZtAsMF7k1Nszz+TYBQrlYRmzOnr398y1JemQ==
   dependencies:
     makeerror "1.0.12"
+
+web-streams-polyfill@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-3.2.1.tgz#71c2718c52b45fd49dbeee88634b3a60ceab42a6"
+  integrity sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==
 
 webidl-conversions@^3.0.0:
   version "3.0.1"
