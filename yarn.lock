@@ -8093,10 +8093,10 @@ libx.js@^2.34.3:
     xregexp "^5.0.2"
     yargs "^17.2.1"
 
-libx.js@^2.36.1:
-  version "2.36.1"
-  resolved "https://registry.yarnpkg.com/libx.js/-/libx.js-2.36.1.tgz#797c39cd927aa7e66af93a96c0804180a1fb22a0"
-  integrity sha512-UNMPYvhaGbUezYwrW2Kl3YDNW3AF4quJd9d7DX+qD2xaTC1gYkDO6xUhqqBrcBw2uKtD3cLR/OMT3tDn3hX8Rg==
+libx.js@^2.36.2:
+  version "2.36.2"
+  resolved "https://registry.yarnpkg.com/libx.js/-/libx.js-2.36.2.tgz#a4d9dc330a4ab753afac56227ca0fca71b9232af"
+  integrity sha512-P79Qv1QS1Jt+k49IsB8JM2ilnnl2gDNwu8GbJdBX7oFIa74PdP/vcvapWwZOQOnC7xbr8xdEGf+lY8PqYYB8gw==
   dependencies:
     axios "^0.21.3"
     concurrency.libx.js "^1.1.1"
