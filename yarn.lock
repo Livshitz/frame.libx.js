@@ -4445,6 +4445,11 @@ concurrency.libx.js@^1.1.1:
   resolved "https://registry.yarnpkg.com/concurrency.libx.js/-/concurrency.libx.js-1.1.1.tgz#7a4d4513c1107c2842d2449679b0264f7599426e"
   integrity sha512-8+Ohem4/xqmY+lUlmnJuE0B9imrShb/AGiK0eFPj0FxhnOuYgxeTsNj3Xx9fA5fq1FUs7VGmPqwjH7fmu/mU2A==
 
+concurrency.libx.js@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/concurrency.libx.js/-/concurrency.libx.js-1.2.1.tgz#c6fa5fd5d5b448fba0f1a8c8bf2086d14d9e83ea"
+  integrity sha512-32HDa/i1aHT1qc3teop4kPDU6jklQ+eZ/VxmZ6ZmMEYykACax8a+b7+FGU6u6DYgRHu6xZcCn/vunAD5cDzHJQ==
+
 configstore@^5.0.0:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/configstore/-/configstore-5.0.1.tgz#d365021b5df4b98cdd187d6a3b0e3f6a7cc5ed96"
@@ -8093,13 +8098,13 @@ libx.js@^2.34.3:
     xregexp "^5.0.2"
     yargs "^17.2.1"
 
-libx.js@^2.36.2:
-  version "2.36.2"
-  resolved "https://registry.yarnpkg.com/libx.js/-/libx.js-2.36.2.tgz#a4d9dc330a4ab753afac56227ca0fca71b9232af"
-  integrity sha512-P79Qv1QS1Jt+k49IsB8JM2ilnnl2gDNwu8GbJdBX7oFIa74PdP/vcvapWwZOQOnC7xbr8xdEGf+lY8PqYYB8gw==
+libx.js@^2.36.3:
+  version "2.36.3"
+  resolved "https://registry.yarnpkg.com/libx.js/-/libx.js-2.36.3.tgz#1df3655d396b66aff68d5a02d1d032412f9342d3"
+  integrity sha512-WKdhxsmtTzC+py0QX5h07MDENccva3hYuPPTwJMkaqdyT3xKHeGb1PRhu1LCJxpH0GWu6rlStgdujd8rFzB5Zw==
   dependencies:
     axios "^0.21.3"
-    concurrency.libx.js "^1.1.1"
+    concurrency.libx.js "^1.2.1"
     cors "^2.8.5"
     crypto-js "^4.0.0"
     detect.js "^2.2.3"
