@@ -105,7 +105,7 @@ export class Helpers {
                     else if (ret == 'false' || ret === false) ret = false;
                     else ret = defaultValue == 'true';
                 }
-                return ret;
+                return ret ?? defaultValue;
             },
             set(value) {
                 this.$router.replace({
