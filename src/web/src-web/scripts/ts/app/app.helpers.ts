@@ -103,7 +103,7 @@ export class Helpers {
                 if (isBoolean) {
                     if (ret === 'true' || ret === true) ret = true;
                     else if (ret == 'false' || ret === false) ret = false;
-                    else ret = defaultValue == 'true';
+                    else ret = defaultValue == true || defaultValue == 'true';
                 }
                 return ret ?? defaultValue;
             },
