@@ -54,7 +54,7 @@
         "firebase-functions": "^3.24.1",
         "html2canvas": "^1.4.1",
         "is-plain-object": "^5.0.0",
-        "libx.js": "^2.36.6",
+        "libx.js": "^2.36.7",
         "lottie-web": "^5.9.6",
         "moment": "^2.29.4",
         "node-sass": "^7.0.3",
