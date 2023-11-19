@@ -7657,27 +7657,7 @@ leven@^3.1.0:
   resolved "https://registry.yarnpkg.com/leven/-/leven-3.1.0.tgz#77891de834064cccba82ae7842bb6b14a13ed7f2"
   integrity sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==
 
-libx.js@^2.34.3:
-  version "2.34.3"
-  resolved "https://registry.yarnpkg.com/libx.js/-/libx.js-2.34.3.tgz#ea5c823258e09efc41292db5c439f6c5ce97d2e9"
-  integrity sha512-HIwuKU1eywwmUbVJwqVxLhRrofgQBw1QRNx+eL0qhgwuClxUX6TtYHLneSmsaOgOnCFAxA2HGnzXdWwbfMlH3A==
-  dependencies:
-    axios "^0.21.3"
-    concurrency.libx.js "^1.1.1"
-    cors "^2.8.5"
-    crypto-js "^4.0.0"
-    detect.js "^2.2.3"
-    di.libx.js "^2.3.1"
-    form-data "^4.0.0"
-    glob "^7.2.0"
-    lodash "^4.17.21"
-    prompt "^1.1.0"
-    rxjs "^6.6.3"
-    rxjs-compat "^6.6.7"
-    xregexp "^5.0.2"
-    yargs "^17.2.1"
-
-libx.js@^3.0.1:
+libx.js@*:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/libx.js/-/libx.js-3.0.1.tgz#5854e68f213ba753ee4155c8a7473d29f30d806b"
   integrity sha512-QyKgjpN++V7U1TfZ1gEQebq95jRBc3J/Z1ZH6Q1cznMsVFC8jzu+rwU6lA3LjdAb700H82SgnD9ipmHUVpiyPw==
@@ -7695,6 +7675,26 @@ libx.js@^3.0.1:
     rxjs "^6.6.3"
     rxjs-compat "^6.6.7"
     web-streams-polyfill "^3.2.1"
+    xregexp "^5.0.2"
+    yargs "^17.2.1"
+
+libx.js@^2.34.3:
+  version "2.34.3"
+  resolved "https://registry.yarnpkg.com/libx.js/-/libx.js-2.34.3.tgz#ea5c823258e09efc41292db5c439f6c5ce97d2e9"
+  integrity sha512-HIwuKU1eywwmUbVJwqVxLhRrofgQBw1QRNx+eL0qhgwuClxUX6TtYHLneSmsaOgOnCFAxA2HGnzXdWwbfMlH3A==
+  dependencies:
+    axios "^0.21.3"
+    concurrency.libx.js "^1.1.1"
+    cors "^2.8.5"
+    crypto-js "^4.0.0"
+    detect.js "^2.2.3"
+    di.libx.js "^2.3.1"
+    form-data "^4.0.0"
+    glob "^7.2.0"
+    lodash "^4.17.21"
+    prompt "^1.1.0"
+    rxjs "^6.6.3"
+    rxjs-compat "^6.6.7"
     xregexp "^5.0.2"
     yargs "^17.2.1"
 
