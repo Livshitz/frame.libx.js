@@ -1,4 +1,10 @@
 {
+    "workbench.colorCustomizations": {
+        // "activityBar.background": "#2980B9",
+        // "activityBar.inactiveForeground": "#070d1e",
+        "titleBar.activeBackground": "#3329b9",
+        "titleBar.inactiveBackground": "#3329b9"
+    },
     "debug.node.autoAttach": "on",
     "editor.formatOnSave": true
 }
