@@ -8,8 +8,8 @@ import { Buefy, libx, Vue, Callbacks } from '/frame/scripts/ts/browserified/fram
 
 export const PageMixin = Vue.mixin({
     created() {
+        if (this.$options.layout == null) return;
         const hasHeaders = this.$options.layout?.headers != null;
-        if (hasHeaders == null) return;
         if (!this.$options.layout.headers) {
             this.$options.layout.headers = {
                 viewName: null,
