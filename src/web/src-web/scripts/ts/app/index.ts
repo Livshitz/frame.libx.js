@@ -112,17 +112,6 @@ export class App {
             log.debug('net: ', network, activityLog);
         });
 
-        Vue.mixin({
-            data() {
-                return {
-                    myvalue: 'hellow m',
-                };
-            },
-            created() {
-                console.log('Global mixin created');
-            }
-        });
-
         Vue.mixin(PageMixin);
 
         // const TestComp2 = Vue.component("test", () => {
