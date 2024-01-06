@@ -6,15 +6,49 @@ import { Buefy, libx, Vue, Callbacks } from '/frame/scripts/ts/browserified/fram
 
 // };
 
+export const PageMixin = Vue.mixin({
+    created() {
+        const hasHeaders = this.$options.layout?.headers != null;
+        if (hasHeaders == null) return;
+        if (!this.$options.layout.headers) {
+            this.$options.layout.headers = {
+                viewName: null,
+                pageTitle: null,
+                desc: null,
+            };
+        }
+        const diff = libx.diff(this.$options.layout.headers, this.$app.layout.headers, true);
+        libx.merge(this.$options.layout, diff);
+        if (hasHeaders) helpers.updateMeta(this.$options.layout.headers);
+    },
+    methods: {
+        updateMeta(values) {
+            helpers.updateMeta({ ...this.$options.layout.headers, ...values });
+        }
+
+    },
+});
+/*
 export class PageMixin extends Vue.mixin({}) {
     created() {
-        console.log('-------- PageMixin');
-        const { layout } = this.$options;
-        if (layout == null) return;
-
-        // libx.merge(this.$app.layout, layout);
-
-        // helpers.updateMeta(this.$app.layout.headers);
+        const hasHeaders = this.$options.layout?.headers != null;
+        if (!this.$options.layout) {
+            this.$options.layout = {
+                headers: {
+                    viewName: null,
+                    pageTitle: null,
+                    desc: null,
+                }
+            };
+        }
+        libx.merge(this.$options.layout, (<any>this).$app.layout);
+        if (hasHeaders) helpers.updateMeta(this.$options.layout);
+    }
+    methods: {
+        updateMeta: function(values) {
+            helpers.updateMeta({...this.$options.layout, ...values});
+        }
+        
     }
 
     curProject?: string;
@@ -37,3 +71,4 @@ export class PageMixin extends Vue.mixin({}) {
     $route: any;
     $buefy: any;
 }
+*/

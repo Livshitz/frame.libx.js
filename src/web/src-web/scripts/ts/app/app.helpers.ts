@@ -31,7 +31,7 @@ export class Helpers {
         const _values = { ...values };
         _values.appName = _values.appName;
 
-        if (!skipPrefix) {
+        if (!skipPrefix && (_values.appName != null && _values.pageTitle)) {
             _values.pageTitle = `${_values.appName}${_values.viewName ? '/' + _values.viewName : ''}${_values.pageTitle ? ' - ' + _values.pageTitle : ''}`;
         }
 

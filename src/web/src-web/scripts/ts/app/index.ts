@@ -32,7 +32,7 @@ export class App {
     api = null;
     router = null;
     firebase = <IFirebase>null;
-    layout: PageMixin & ObjectLiteral = null;
+    layout: typeof PageMixin & ObjectLiteral = null;
     contentful = null;
     helpers: typeof Helpers = null;
     originalHeaders = {
@@ -110,6 +110,17 @@ export class App {
             log.isDebug = false;
             log.isShowStacktrace = true;
             log.debug('net: ', network, activityLog);
+        });
+
+        Vue.mixin({
+            data() {
+                return {
+                    myvalue: 'hellow m',
+                };
+            },
+            created() {
+                console.log('Global mixin created');
+            }
         });
 
         Vue.mixin(PageMixin);

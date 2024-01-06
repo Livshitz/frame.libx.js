@@ -20,10 +20,12 @@ import { libx, Vue } from '/frame/scripts/ts/browserified/frame.js';
 import helpers from '/frame/scripts/ts/app/app.helpers.js';
 
 export default class Page extends PageMixin {
-	headers: {
-		viewName: '@Template',
-		pageTitle: '@Template',
-		desc: '@Template Description',
+	layout: {
+		headers: {
+			viewName: '@Template',
+			pageTitle: '@Template',
+			desc: '@Template Description',
+		}
 	}
 	data() {
 		return {};

@@ -57,7 +57,7 @@
         "libx.js": "*",
         "lottie-web": "^5.9.6",
         "moment": "^2.29.4",
-        "pax.libx.js": "^0.6.25",
+        "pax.libx.js": "*",
         "pug": "^3.0.2",
         "sanitize-html": "^2.7.2",
         "sass": "^1.69.5",

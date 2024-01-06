@@ -16,11 +16,12 @@ declare global {
 declare module 'vue/types/options' {
     interface ComponentOptions<V extends Vue> {
         layout?: {
-            headers?: {
+            headers?: Partial<{
+                appName?: string;
                 viewName?: string;
                 pageTitle?: string;
                 desc?: string;
-            };
+            }>;
         };
     }
 }
