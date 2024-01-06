@@ -40,6 +40,7 @@ export class Helpers {
             const key = elm.getAttribute('__content').replace(/[{}]*/g, '');
             const value = _values[key]; //libx.getDeep(app, content, '.');
             // if (!value) return;
+            if (value == null) return;
             elm.setAttribute('content', value);
         });
 
