@@ -89,6 +89,16 @@ export class Helpers {
         return libx.browser.browserInfo.device.type == 'Desktop' && libx.browser.browserInfo.browser.family == 'Chrome';
     }
 
+    public static go(path: string, query: Object = null, reload = false) {
+        let q = { ...window.view.$route.query, ...query };
+        if (libx.isEmptyObject(query) && query != null) q = null;
+        window.view.$router.push({ path, query: q });
+
+        if (reload) {
+            window.view.$router.go(0);
+        }
+    }
+
     public static navigate(destination, keepQuery = false, reload = false) {
         if (!destination.startsWith('/') && !destination.startsWith('?')) {
             destination = window.view.$route.path + '/' + destination;
