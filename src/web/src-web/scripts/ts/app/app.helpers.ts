@@ -89,11 +89,17 @@ export class Helpers {
         return libx.browser.browserInfo.device.type == 'Desktop' && libx.browser.browserInfo.browser.family == 'Chrome';
     }
 
-    public static navigate(destination, keepQuery = false) {
+    public static navigate(destination, keepQuery = false, reload = false) {
+        if (!destination.startsWith('/') && !destination.startsWith('?')) {
+            destination = window.view.$route.path + '/' + destination;
+        }
         if (keepQuery) {
             window.view.$router.push({ path: destination, query: window.view.$route.query });
         } else {
             window.view.$router.push(destination);
+        }
+        if (reload) {
+            window.view.$router.go(0);
         }
     }
 

@@ -21,6 +21,7 @@ declare module 'vue/types/options' {
                 viewName?: string;
                 pageTitle?: string;
                 desc?: string;
+                image?: string;
             }>;
         };
     }
