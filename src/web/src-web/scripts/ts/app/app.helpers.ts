@@ -99,6 +99,14 @@ export class Helpers {
         }
     }
 
+    public static clearQuery(reload = false) {
+        window.view.$router.push({ path: null, query: null });
+
+        if (reload) {
+            window.view.$router.go(0);
+        }
+    }
+
     public static navigate(destination, keepQuery = false, reload = false) {
         if (!destination.startsWith('/') && !destination.startsWith('?')) {
             destination = window.view.$route.path + '/' + destination;
