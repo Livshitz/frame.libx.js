@@ -133,11 +133,18 @@ export class Helpers {
                 return ret ?? defaultValue;
             },
             set(value) {
+                let newQ = {
+                    ...this.$route.query,
+                    [paramName]: value,
+                };
+
+                if (libx.isEmptyString(value)) {
+                    // const { [paramName]: undefined, ...newQ2 } = this.$route.query;
+                    // newQ = newQ;
+                    delete newQ[paramName];
+                }
                 this.$router.replace({
-                    query: {
-                        ...this.$route.query,
-                        [paramName]: value,
-                    },
+                    query: newQ,
                     // params: { savePosition: true },
                 });
             },
