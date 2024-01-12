@@ -304,6 +304,16 @@ export class Helpers {
         return view.$parent.$el.className.contains('modal');
     }
 
+    public static catchErrors(cb?: (err: Error, vm: Vue, info: string) => void, suppressErrorAlert = false) {
+        Vue.config.errorHandler = function (err: Error, vm: Vue, info: string) {
+            if (cb)
+                cb(err, vm, info);
+            else
+                app.helpers.toast(`Error: ${err.message}`, 'is-danger');
+            return suppressErrorAlert;
+        };
+    }
+
     // @params blob - The ClipboardItem takes an object with the MIME type as key, and the actual blob as the value.
     // @return Promise<void>
     private static async setToClipboard(blob) {
