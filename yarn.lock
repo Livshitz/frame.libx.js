@@ -7681,10 +7681,10 @@ libx.js@^2.34.3:
     xregexp "^5.0.2"
     yargs "^17.2.1"
 
-libx.js@^3.6.4:
-  version "3.6.4"
-  resolved "https://registry.yarnpkg.com/libx.js/-/libx.js-3.6.4.tgz#4e4ebc9c7c617bb4b1c3099e915b1e15d35f59fd"
-  integrity sha512-6DMkH+u9aP3Wdoq/BZGzIWF72F9F8b7nGHvzbI18chRzZ9rOPQzaCDl9aOszpqH/Lt1IK8Fxpuej/XuWU0BbDg==
+libx.js@^3.6.6:
+  version "3.6.6"
+  resolved "https://registry.yarnpkg.com/libx.js/-/libx.js-3.6.6.tgz#a8bfd01fc244342c7af77a8d6ea510754a44abea"
+  integrity sha512-F9akXKZMqpzys4YLKONvhHGWuHqr6leP5iHHEhgxLDY1iCFCoLQTutNVxfeAhEGQpFkPGdlTaMhs+EUyUPVHIg==
   dependencies:
     axios "^0.21.3"
     concurrency.libx.js "^1.2.1"
