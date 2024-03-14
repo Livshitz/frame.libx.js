@@ -22,8 +22,10 @@ let renderMedia = (file, title) => {
 export class Helpers {
     public static appVersion: string = null;
 
-    public static lazyLoader(url): () => Promise<any> {
-        return () => System.import(url);
+    public static lazyLoader(url, isUncache = false): () => Promise<any> {
+        let uncacheSuffix = '';
+        if (isUncache) uncacheSuffix = `?r${libx.randomNumber()}`;
+        return () => System.import(url + uncacheSuffix);
     }
 
     public static updateMeta(values: any, skipPrefix = false) {
